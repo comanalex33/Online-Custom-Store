@@ -19,7 +19,10 @@ function Register(props) {
         else if (password !== repassword)
             alert("The passwords are not the same!")
         else
-            alert(`New user :\n   Email-${email}\n   Username-${username}\n   Password-${password}\n   Role-${role}`)
+            {
+                alert(`New user :\n   Email-${email}\n   Username-${username}\n   Password-${password}\n   Role-${role}`)
+                props.history.push('/login')
+            }
         event.preventDefault()  
     }
 
