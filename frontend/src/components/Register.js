@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import '../css/Register.css'
+import '../css/Authentication.css'
 
-function Register() {
+function Register(props) {
 
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [repassword, setRePassword] = useState('')
-    const [role, setRole] = useState('client')
+    const [role, setRole] = useState('Client')
 
     const handleSubmit = event => {
-        if (username === '')
+        if (email === '')
+            alert("There is no email passed")
+        else if (username === '')
             alert("There is no username passed")
         else if (password === '')
             alert("There are no password passed")
@@ -78,7 +80,7 @@ function Register() {
                             <label>Role</label>
                         </div>
                         <select value={role} onChange={handleRoleChange} >
-                            <option value='visitor'>Visitor</option>
+                            <option value='client'>Client</option>
                             <option value='admin'>Admin</option>
                         </select>
                     </div>

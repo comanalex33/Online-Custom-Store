@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/Authentication.css'
  
 function Login(props) {
   const username = useFormInput('');
@@ -7,13 +8,17 @@ function Login(props) {
   const [loading, setLoading] = useState(false);
  
   // handle button click of login form
-  const handleLogin = () => {
+  const handleLoginButtonClick = () => {
     props.history.push('/dashboard');
+  }
+
+  const handleRegisterButtonClick = () => {
+    props.history.push('/register')
   }
  
   return (
-    <div>
-      Login page<br /><br />
+    <div className='Container'>
+      <p id='title'>Login page</p>
       <div>
         Username<br />
         <input type="text" {...username} autoComplete="new-password" />
@@ -23,11 +28,11 @@ function Login(props) {
         <input type="password" {...password} autoComplete="new-password" />
       </div>
     
-        <input type="button" value={'Login'} onClick={handleLogin} disabled={loading} /><br />
+        <input type="button" value={'Login'} onClick={handleLoginButtonClick} disabled={loading} /><br />
       <br />
       <div>
           Don't have an account yet? 
-            <input type="button" value={'Register'} disabled={loading} /><br />
+            <input type="button" value={'Register'} onClick={handleRegisterButtonClick} disabled={loading} /><br />
       </div>
       
     </div>
