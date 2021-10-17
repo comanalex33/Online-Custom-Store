@@ -1,15 +1,19 @@
 import React from 'react';
- 
-function Dashboard(props) {
- 
+import { useHistory } from 'react-router-dom'
+
+function Dashboard({ location }) {
+
+  const history = useHistory()
+  const connectedUser = location.state.connectedUser
+
   // handle click event of logout button
   const handleLogout = () => {    
-    props.history.push('/login');
+    history.push('/login');
   }
  
   return (
     <div>
-      Welcome User!<br /><br />
+      Welcome {connectedUser.UserName} {connectedUser.UserPassword} {connectedUser.UserEmail} {connectedUser.UserRole}<br /><br />
       <input type="button" onClick={handleLogout} value="Logout" />
     </div>
   );

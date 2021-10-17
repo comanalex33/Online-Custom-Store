@@ -69,14 +69,14 @@ function Register(props) {
                         <input className="center_content input_text" placeholder="Username" type='text' value={username} onChange={handleUsernameChange} />
                     </div>
                     <div className="center">
-                        <input className="center_content input_text" autoComplete='off' placeholder="New Password"  type='password' value={password} id='password' onChange={handlePasswordChange} />
+                        <input className="center_content input_text" autoComplete="new-password" placeholder="New Password"  type='password' value={password} id='password' onChange={handlePasswordChange} />
                     </div>
                     <div className="right">
                         <input type='checkbox' name='Show password' onChange={handleShowPassword} />
                         <label>Show password</label>
                     </div>
                     <div className="center">
-                        <input className="center_content input_text" placeholder="Re-enter Password" value={repassword}  type='password' onChange={handleRePasswordChange} />
+                        <input className="center_content input_text" autoComplete="new-password" placeholder="Re-enter Password" value={repassword}  type='password' onChange={handleRePasswordChange} />
                     </div>
                     <div className='flex role'>
                         <div id='role_label'>
