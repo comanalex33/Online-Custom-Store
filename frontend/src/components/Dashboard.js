@@ -1,5 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
+import Navbar from './Navbar/Navbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Favourites from './Client/Favourites';
+import Order from './Client/Order';
+import Products from './Client/Products';
+import Profile from './Client/Profile';
+import Home from './Client/Home';
+import '../css/Client.css'
 
 function Dashboard({ location }) {
 
@@ -7,16 +15,26 @@ function Dashboard({ location }) {
   const connectedUser = location.state.connectedUser
 
   // handle click event of logout button
-  const handleLogout = () => {    
+  const handleLogout = () => {
     history.push('/login');
   }
- 
+
   return (
     <div>
-      Welcome {connectedUser.UserName} {connectedUser.UserPassword} {connectedUser.UserEmail} {connectedUser.UserRole}<br /><br />
-      <input type="button" onClick={handleLogout} value="Logout" />
+      <Router>
+        <Navbar />
+        {/* Welcome {connectedUser.UserName} {connectedUser.UserPassword} {connectedUser.UserEmail} {connectedUser.UserRole}<br /><br />
+      <input type="button" onClick={handleLogout} value="Logout" /> */}
+        <Switch>
+          <Route path='/dashboard' exact component={Home}  />
+          <Route path='/dashboard/favourites' exact component={Favourites} />
+          <Route path='/dashboard/order' component={Order} />
+          <Route path='/dashboard/products' component={Products} />
+          <Route path='/dashboard/profile' render={(props) => (<Profile {...props} connectedUser={connectedUser}/>)} />
+        </Switch>
+      </Router>
     </div>
   );
 }
- 
+
 export default Dashboard;

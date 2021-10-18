@@ -1,0 +1,48 @@
+import React from 'react'
+import { useHistory } from 'react-router';
+import {
+    Nav,
+    NavLink,
+    NavMenu,
+    NavBtn,
+    NavBtnLink
+} from './NavbarElements';
+
+const Navbar = () => {
+
+    const history = useHistory()
+
+    const handleLogOut = event => {
+        history.push('/login');
+        window.location.reload();
+    }
+
+    return (
+        <>
+            <Nav>
+                <NavMenu>
+                    <NavLink to="/dashboard">
+                        Home
+                    </NavLink>
+                    <NavLink to="/dashboard/products">
+                        Products
+                    </NavLink>
+                    <NavLink to="/dashboard/favourites">
+                        Favourites
+                    </NavLink>
+                    <NavLink to="/dashboard/order">
+                        Order
+                    </NavLink>
+                    <NavLink to="/dashboard/profile">
+                        Profile
+                    </NavLink>
+                </NavMenu>
+                <NavBtn>
+                    <NavBtnLink onClick={handleLogOut}>Log Out</NavBtnLink>
+                </NavBtn>
+            </Nav>
+        </>
+    )
+}
+
+export default Navbar
