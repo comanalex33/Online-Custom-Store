@@ -31,8 +31,12 @@ function Login() {
   // handle button click of login form
   const handleLoginButtonClick = () => {
     const user = found(username, password)
-    if(user !== null)
-      history.push('/dashboard', { connectedUser: user });
+    if(user !== null) {
+      //if(user.UserRole === 'client' )
+        history.push('/dashboard', { connectedUser: user });
+      //else
+        //history.push('/admin_dashboard', { connectedUser: user });
+    }
     else
       alert("Wrong credentials")
   }

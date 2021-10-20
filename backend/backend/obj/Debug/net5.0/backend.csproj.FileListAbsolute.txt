@@ -31,4 +31,3 @@ D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\obj\Debug\net5
 D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\obj\Debug\net5.0\ref\backend.dll
 D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\obj\Debug\net5.0\backend.pdb
 D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\obj\Debug\net5.0\backend.genruntimeconfig.cache
-D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\obj\Debug\net5.0\backend.csproj.CopyComplete

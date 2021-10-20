@@ -8,16 +8,12 @@ import Products from './Client/Products';
 import Profile from './Client/Profile';
 import Home from './Client/Home';
 import '../css/Client.css'
+import Faqs from './Client/Faqs';
 
 function Dashboard({ location }) {
 
   const history = useHistory()
   const connectedUser = location.state.connectedUser
-
-  // handle click event of logout button
-  const handleLogout = () => {
-    history.push('/login');
-  }
 
   return (
     <div>
@@ -30,6 +26,7 @@ function Dashboard({ location }) {
           <Route path='/dashboard/favourites' exact component={Favourites} />
           <Route path='/dashboard/order' component={Order} />
           <Route path='/dashboard/products' component={Products} />
+          <Route path='/dashboard/faqs' render={(props) => (<Faqs {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/profile' render={(props) => (<Profile {...props} connectedUser={connectedUser}/>)} />
         </Switch>
       </Router>
