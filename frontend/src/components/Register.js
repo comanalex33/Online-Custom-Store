@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import '../css/Authentication.css'
 
 function Register(props) {
@@ -7,23 +8,40 @@ function Register(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [repassword, setRePassword] = useState('')
-    const [role, setRole] = useState('Client')
+    const [role, setRole] = useState('client')
 
-    const handleSubmit = event => {
-        if (email === '')
-            alert("There is no email passed")
-        else if (username === '')
-            alert("There is no username passed")
-        else if (password === '')
-            alert("There are no password passed")
-        else if (password !== repassword)
-            alert("The passwords are not the same!")
-        else
-            {
-                alert(`New user :\n   Email-${email}\n   Username-${username}\n   Password-${password}\n   Role-${role}`)
-                props.history.push('/login')
-            }
-        event.preventDefault()  
+    function handleSubmit() {
+        // if (email === '')
+        //     alert("There is no email passed")
+        // else if (username === '')
+        //     alert("There is no username passed")
+        // else if (password === '')
+        //     alert("There are no password passed")
+        // else if (password !== repassword)
+        //     alert("The passwords are not the same!")
+        // else
+        //     {
+        //         alert(`New user :\n   Email-${email}\n   Username-${username}\n   Password-${password}\n   Role-${role}`)
+        //         //props.history.push('/login')
+        //     }
+        // event.preventDefault()  
+
+        let user = {
+            UserName: username,
+            UserEmail: email,
+            UserPassword: password,
+            UserRole: role
+        };
+        //console.log(user)
+
+        axios.post('http://localhost:51404/api/User', user)
+            .then(res => {
+                alert('User added succesfully!');
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err)
+            });
     }
 
     const handleEmailChange = event => {
@@ -60,7 +78,7 @@ function Register(props) {
             <div>
                 <label id='title'>Register</label>
             </div>
-            <form className='Form' autoComplete="off">
+            <div className='Form'>
                 <div>
                     <div className="center">
                         <input className="center_content input_text" placeholder="E-mail" type='text' value={email} onChange={handleEmailChange} />
@@ -88,10 +106,10 @@ function Register(props) {
                         </select>
                     </div>
                     <div className="right">
-                        <button type='submit' onClick={handleSubmit}>Register</button>
+                        <button onClick={handleSubmit}>Register</button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     )
 }
