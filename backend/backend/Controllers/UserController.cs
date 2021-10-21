@@ -25,7 +25,8 @@ namespace backend.Controllers
                        UserName as ""UserName"",
                        UserEmail as ""UserEmail"",
                        UserPassword as ""UserPassword"",
-                       UserRole as ""UserRole""
+                       UserRole as ""UserRole"",
+                       UserWantsAdmin as ""UserWantsAdmin""
                 from Users
             ";
 
@@ -52,8 +53,8 @@ namespace backend.Controllers
         public JsonResult Post(User user)
         {
             string query = @"
-                insert into Users(UserName,UserEmail,UserPassword,UserRole)
-                values (@UserName,@UserEmail,@UserPassword,@UserRole)
+                insert into Users(UserName,UserEmail,UserPassword,UserRole,UserWantsAdmin)
+                values (@UserName,@UserEmail,@UserPassword,@UserRole,@UserWantsAdmin)
             ";
 
             DataTable table = new DataTable();
@@ -68,6 +69,7 @@ namespace backend.Controllers
                     myCommand.Parameters.AddWithValue("@UserEmail", user.UserEmail);
                     myCommand.Parameters.AddWithValue("@UserPassword", user.UserPassword);
                     myCommand.Parameters.AddWithValue("@UserRole", user.UserRole);
+                    myCommand.Parameters.AddWithValue("@UserWantsAdmin", user.UserWantsAdmin);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
 
@@ -77,6 +79,72 @@ namespace backend.Controllers
             }
 
             return new JsonResult("Added succesfully");
+        }
+
+        [HttpPut]
+        public JsonResult Put(User user)
+        {
+            string query = @"
+                update Users
+                set UserName = @UserName,
+                    UserEmail = @UserEmail,
+                    UserPassword = @UserPassword,
+                    UserRole = @UserRole,
+                    UserWantsAdmin = @UserWantsAdmin
+                where UserId = @UserId
+            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("Database");
+            NpgsqlDataReader myReader;
+            using (NpgsqlConnection myCon = new NpgsqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (NpgsqlCommand myCommand = new NpgsqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@UserId", user.UserId);
+                    myCommand.Parameters.AddWithValue("@UserName", user.UserName);
+                    myCommand.Parameters.AddWithValue("@UserEmail", user.UserEmail);
+                    myCommand.Parameters.AddWithValue("@UserPassword", user.UserPassword);
+                    myCommand.Parameters.AddWithValue("@UserRole", user.UserRole);
+                    myCommand.Parameters.AddWithValue("@UserWantsAdmin", user.UserWantsAdmin);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult("Updated succesfully");
+        }
+
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
+        {
+            string query = @"
+                delete from Users
+                where UserId=@UserId
+            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("Database");
+            NpgsqlDataReader myReader;
+            using (NpgsqlConnection myCon = new NpgsqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (NpgsqlCommand myCommand = new NpgsqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@UserId", id);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult("Deleted succesfully");
         }
     }
 }

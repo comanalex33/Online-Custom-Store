@@ -8,7 +8,7 @@ import {
     NavBtnLink
 } from './NavbarElements';
 
-const Navbar = () => {
+const Navbar = ({connectedUser}) => {
 
     const history = useHistory()
 
@@ -39,6 +39,11 @@ const Navbar = () => {
                     <NavLink to="/dashboard/profile">
                         Profile
                     </NavLink>
+                    {(connectedUser.UserRole === 'admin') ?
+                    <NavLink to="/dashboard/requests">
+                        Requests
+                    </NavLink> 
+                    : null }
                 </NavMenu>
                 <NavBtn>
                     <NavBtnLink onClick={handleLogOut}>Log Out</NavBtnLink>

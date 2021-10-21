@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import '../css/Authentication.css'
 
@@ -8,31 +8,21 @@ function Register(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [repassword, setRePassword] = useState('')
-    const [role, setRole] = useState('client')
 
     function handleSubmit() {
-        // if (email === '')
-        //     alert("There is no email passed")
-        // else if (username === '')
-        //     alert("There is no username passed")
-        // else if (password === '')
-        //     alert("There are no password passed")
-        // else if (password !== repassword)
-        //     alert("The passwords are not the same!")
-        // else
-        //     {
-        //         alert(`New user :\n   Email-${email}\n   Username-${username}\n   Password-${password}\n   Role-${role}`)
-        //         //props.history.push('/login')
-        //     }
-        // event.preventDefault()  
+
+        if(password !== repassword) {
+            alert(`Password missmatch!`)
+            return
+        }
 
         let user = {
             UserName: username,
             UserEmail: email,
             UserPassword: password,
-            UserRole: role
+            UserRole: 'client',
+            UserWantsAdmin: false
         };
-        //console.log(user)
 
         axios.post('http://localhost:51404/api/User', user)
             .then(res => {
@@ -58,10 +48,6 @@ function Register(props) {
 
     const handleRePasswordChange = event => {
         setRePassword(event.target.value)
-    }
-
-    const handleRoleChange = event => {
-        setRole(event.target.value)        
     }
 
     function handleShowPassword() {
@@ -95,15 +81,6 @@ function Register(props) {
                     </div>
                     <div className="center">
                         <input className="center_content input_text" autoComplete="new-password" placeholder="Re-enter Password" value={repassword}  type='password' onChange={handleRePasswordChange} />
-                    </div>
-                    <div className='flex role'>
-                        <div id='role_label'>
-                            <label>Role</label>
-                        </div>
-                        <select value={role} onChange={handleRoleChange} >
-                            <option value='client'>Client</option>
-                            <option value='admin'>Admin</option>
-                        </select>
                     </div>
                     <div className="right">
                         <button onClick={handleSubmit}>Register</button>

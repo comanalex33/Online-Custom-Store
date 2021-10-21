@@ -1,0 +1,49 @@
+.card {
+    background-color: white;
+    margin: 10px;
+    padding-left: 5px;
+    border-radius: 10px;
+
+    display: flex;
+}
+
+.title {
+    margin: 0px 0px 0px 5px;
+    width: max-content;
+}
+
+p {
+    margin: 5px 5px 5px 20px;
+    width: max-content;
+}
+
+.buttons-div {
+    padding-right: 40px;
+    width: 100%;
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+button {
+    height: 50px;
+    width: 100px;
+}
+
+#accept {
+    background-color: #41fa47;
+}
+
+#accept:hover {
+    background-color: greenyellow;
+}
+
+#reject {
+    background-color: #d60614;
+}
+
+#reject:hover {
+    background-color: #fc2837;
+}
