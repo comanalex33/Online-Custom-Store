@@ -50,7 +50,7 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(User user)
+        public JsonResult Post(UserModel user)
         {
             string query = @"
                 insert into Users(UserName,UserEmail,UserPassword,UserRole,UserWantsAdmin)
@@ -82,7 +82,7 @@ namespace backend.Controllers
         }
 
         [HttpPut]
-        public JsonResult Put(User user)
+        public JsonResult Put(UserModel user)
         {
             string query = @"
                 update Users

@@ -47,3 +47,22 @@ button {
 #reject:hover {
     background-color: #fc2837;
 }
+
+.max-height {
+    height: 80vh;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.no-requests {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}

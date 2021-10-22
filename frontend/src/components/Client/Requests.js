@@ -28,12 +28,12 @@ function Requests() {
     ))
 
     if(requests.length === 0)
-         requestList = <h3>No requests</h3>
+         requestList = <div className='container'><div className='no-requests'><h1>No requests</h1></div></div>
 
     return (
-        <>
+        <div className='max-height'>
             {requestList}
-        </>
+        </div>
     )
 }
 

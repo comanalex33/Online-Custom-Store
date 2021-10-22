@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/Faqs.css'
 import AddFaqPopup from '../Popups/AddFaqPopup';
+import FaqCard from '../Cards/FaqCard';
 
 function Faqs({connectedUser}) {
 
@@ -51,23 +52,26 @@ function Faqs({connectedUser}) {
         faqs.push(faq)
         setFaqs(faqs)
 
-        
+        setTimeout(() => {
+            setButtonAdd(false)
+            setAnswer('')
+            setQuestion('')
+        },100)
     }
 
-    const faqList = faqs.map((item, _) => (
-        <div key={item.FaqId}>
-            <li>{item.FaqQuestion}</li>
-            <ul>
-                <li>{item.FaqAnswer}</li>
-            </ul>
-        </div>
+    const faqList = faqs.map((item, index) => (
+        // <div key={item.FaqId}>
+        //     <li>{item.FaqQuestion}</li>
+        //     <ul>
+        //         <li>{item.FaqAnswer}</li>
+        //     </ul>
+        // </div>
+        <FaqCard position={(index % 2 === 0) ? 'flex-start' : 'flex-end'} FaqQuestion={item.FaqQuestion} FaqAnswer={item.FaqAnswer} key={item.FaqId}/>
     ))
 
     return (
         <div>
-            <ul>
-                {faqList}
-            </ul>
+            {faqList}
             {(connectedUser.UserRole === 'admin') ? <button id='fixed-button' onClick={() => setButtonAdd(true)}>Add Faq</button> : null }
             <AddFaqPopup trigger={buttonAdd} setTrigger={setButtonAdd} faqs={faqs} setFaqs={setFaqs}>
                 <h2>Add FAQ</h2>
