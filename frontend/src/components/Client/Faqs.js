@@ -12,7 +12,7 @@ function Faqs({connectedUser}) {
     const [answer, setAnswer] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:51404/api/Faqs')
+        axios.get('http://localhost:5000/api/Faqs')
         .then(res => {
           setFaqs(res.data)
         })
@@ -41,7 +41,7 @@ function Faqs({connectedUser}) {
             FaqAnswer: answer
         }
 
-        axios.post('http://localhost:51404/api/Faqs', faq)
+        axios.post('http://localhost:5000/api/Faqs', faq)
             .then(res => {
                 console.log(res);
             })
@@ -72,7 +72,7 @@ function Faqs({connectedUser}) {
     return (
         <div>
             {faqList}
-            {(connectedUser.UserRole === 'admin') ? <button id='fixed-button' onClick={() => setButtonAdd(true)}>Add Faq</button> : null }
+            {(connectedUser.Role === 'admin') ? <button id='fixed-button' onClick={() => setButtonAdd(true)}>Add Faq</button> : null }
             <AddFaqPopup trigger={buttonAdd} setTrigger={setButtonAdd} faqs={faqs} setFaqs={setFaqs}>
                 <h2>Add FAQ</h2>
                 <div className='input-fields'>

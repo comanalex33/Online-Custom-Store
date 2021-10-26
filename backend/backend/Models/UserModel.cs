@@ -1,26 +1,42 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using backend.ModelRequest;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models
 {
     public class UserModel
     {
-        [Key]
-        public int UserId { get; set; }
+        public UserModel() { }
+        public UserModel(long _Id, UserRequestModel _request)
+        {
+            Id = _Id;
+            Name = _request.Name;
+            Email = _request.Email;
+            Password = _request.Password;
+            Role = _request.Role;
+            WantsAdmin = _request.WantsAdmin;
+            ImageName = "";
+            ImageFile = null;
+        }
+        public long Id { get; set; }
 
-        [Column(TypeName = "varchar(50)")]
-        public string UserName { get; set; }
+        public string Name { get; set; }
 
-        [Column(TypeName = "varchar(50)")]
-        public string UserEmail { get; set; }
+        public string Email { get; set; }
 
-        [Column(TypeName = "varchar(50)")]
-        public string UserPassword { get; set; }
+        public string Password { get; set; }
 
-        [Column(TypeName = "varchar(50)")]
-        public string UserRole { get; set; }
+        public string Role { get; set; }
 
-        [Column(TypeName = "bool")]
-        public bool UserWantsAdmin { get; set; }
+        public bool WantsAdmin { get; set; }
+
+        public string ImageName { get; set; }
+
+        [NotMapped]
+        public string ImageSrc { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; } 
     }
 }

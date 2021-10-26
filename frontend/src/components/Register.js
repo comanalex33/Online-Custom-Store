@@ -17,14 +17,14 @@ function Register(props) {
         }
 
         let user = {
-            UserName: username,
-            UserEmail: email,
-            UserPassword: password,
-            UserRole: 'client',
-            UserWantsAdmin: false
+            name: username,
+            email: email,
+            password: password,
+            role: 'client',
+            wantsAdmin: false
         };
 
-        axios.post('http://localhost:51404/api/User', user)
+        axios.post('http://localhost:5000/api/User', user)
             .then(res => {
                 alert('User added succesfully!');
                 console.log(res);

@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace backend.Models
 {
@@ -12,5 +8,6 @@ namespace backend.Models
         { }
 
         public DbSet<UserModel> Users { get; set; }
+        public DbSet<FaqModel> Faqs { get; set; }
     }
 }
