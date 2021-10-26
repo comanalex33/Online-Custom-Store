@@ -39,7 +39,7 @@ const Navbar = ({connectedUser}) => {
                     <NavLink to="/dashboard/profile">
                         Profile
                     </NavLink>
-                    {(connectedUser.UserRole === 'admin') ?
+                    {(connectedUser.role === 'admin') ?
                     <NavLink to="/dashboard/requests">
                         Requests
                     </NavLink> 

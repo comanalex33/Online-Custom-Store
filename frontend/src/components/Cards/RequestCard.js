@@ -8,42 +8,44 @@ function RequestCard(props) {
     const requests = props.requests;
     const setRequests = props.setRequests;
 
-    function handleAccept() {
-        let user = {
-            UserId: connectedUser.UserId,
-            UserName: connectedUser.UserName,
-            UserEmail: connectedUser.UserEmail,
-            UserPassword: connectedUser.UserPassword,
-            UserRole: 'admin',
-            UserWantsAdmin: false
-        };
-
-        axios.put('http://localhost:51404/api/User', user)
-            .then(res => {
+    const updateUser = (formData) => {
+        axios.put('http://localhost:5000/api/User', formData)
+            .then(console.log('Updated'))
+            .catch(error => {
+                console.log(error)
             })
-            .catch(err => {
-                console.log(err)
-            });
+    }
+
+    function handleAccept() {
+        const formData = new FormData()
+        formData.append('id', connectedUser.id)
+        formData.append('name', connectedUser.name)
+        formData.append('email', connectedUser.email)
+        formData.append('password', connectedUser.password)
+        formData.append('role', 'admin')
+        formData.append('wantsAdmin', false)
+        formData.append('imageName', (connectedUser.imageName == null)?'':connectedUser.imageName)
+        formData.append('imageFile', null)
+        formData.append('updateImage', false)
+
+        updateUser(formData)
 
         deleteRequest()
     }
 
     function handleReject() {
-        let user = {
-            UserId: connectedUser.UserId,
-            UserName: connectedUser.UserName,
-            UserEmail: connectedUser.UserEmail,
-            UserPassword: connectedUser.UserPassword,
-            UserRole: connectedUser.UserRole,
-            UserWantsAdmin: false
-        };
+        const formData = new FormData()
+        formData.append('id', connectedUser.id)
+        formData.append('name', connectedUser.name)
+        formData.append('email', connectedUser.email)
+        formData.append('password', connectedUser.password)
+        formData.append('role', 'client')
+        formData.append('wantsAdmin', false)
+        formData.append('imageName', (connectedUser.imageName == null)?'':connectedUser.imageName)
+        formData.append('imageFile', null)
+        formData.append('updateImage', false)
 
-        axios.put('http://localhost:51404/api/User', user)
-            .then(res => {
-            })
-            .catch(err => {
-                console.log(err)
-            });
+        updateUser(formData)
         
         deleteRequest()
     }
@@ -51,7 +53,7 @@ function RequestCard(props) {
     function deleteRequest() {
         var l = [];
         for(const request of requests) {
-            if(request.UserId === connectedUser.UserId)
+            if(request.id === connectedUser.id)
                 continue;
             l.push(request);
         }
@@ -61,9 +63,9 @@ function RequestCard(props) {
     return (
         <div className='card'>
             <div>
-                <h3 className='title'>{connectedUser.UserName} wants to be admin</h3>
-                <p>User: {connectedUser.UserName}</p>
-                <p>Email: {connectedUser.UserEmail}</p>
+                <h3 className='title'>{connectedUser.name} wants to be admin</h3>
+                <p>User: {connectedUser.name}</p>
+                <p>Email: {connectedUser.email}</p>
             </div>
             <div className='buttons-div'>
                 <button id='accept' onClick={handleAccept}>Accept</button>

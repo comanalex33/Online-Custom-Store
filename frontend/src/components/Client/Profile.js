@@ -4,14 +4,6 @@ import '../../css/Profile.css'
 
 const defaultImageSrc = '/img/default_image.jpg'
 
-const updateUser = (formData) => {
-    axios.put('http://localhost:5000/api/User', formData)
-        .then(console.log('Updated'))
-        .catch(error => {
-            console.log(error)
-        })
-}
-
 function Profile({ connectedUser }) {
 
     const initialValues = {
@@ -22,24 +14,27 @@ function Profile({ connectedUser }) {
 
     const [values, setValues] = useState(initialValues)
 
-    function handleRequestAdminAccess() {
-        let user = {
-            UserId: connectedUser.id,
-            UserName: connectedUser.name,
-            UserEmail: connectedUser.email,
-            UserPassword: connectedUser.password,
-            UserRole: connectedUser.role,
-            UserWantsAdmin: true
-        };
-
-        axios.put('http://localhost:51404/api/User', user)
-            .then(res => {
-                alert('Access requested!');
-                console.log(res);
+    const updateUser = (formData) => {
+        axios.put('http://localhost:5000/api/User', formData)
+            .then(res => console.log(res))
+            .catch(error => {
+                console.log(error)
             })
-            .catch(err => {
-                console.log(err)
-            });
+    }
+
+    function handleRequestAdminAccess() {
+        const formData = new FormData()
+        formData.append('id', connectedUser.id)
+        formData.append('name', connectedUser.name)
+        formData.append('email', connectedUser.email)
+        formData.append('password', connectedUser.password)
+        formData.append('role', connectedUser.role)
+        formData.append('wantsAdmin', true)
+        formData.append('imageName', (connectedUser.imageName == null)?'':connectedUser.imageName)
+        formData.append('imageFile', null)
+        formData.append('updateImage', false)
+
+        updateUser(formData)
     }
 
     const showImage = event => {
@@ -72,6 +67,7 @@ function Profile({ connectedUser }) {
         formData.append('wantsAdmin', connectedUser.wantsAdmin)
         formData.append('imageName', values.imageName)
         formData.append('imageFile', values.imageFile)
+        formData.append('updateImage', true)
         updateUser(formData)
     }
 
@@ -90,6 +86,7 @@ function Profile({ connectedUser }) {
         formData.append('wantsAdmin', connectedUser.wantsAdmin)
         formData.append('imageName', '')
         formData.append('imageFile', '')
+        formData.append('updateImage', true)
         updateUser(formData)
     }
 

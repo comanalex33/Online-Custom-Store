@@ -41,7 +41,8 @@ namespace backend.Controllers
                     Role = x.Role,
                     WantsAdmin = x.WantsAdmin,
                     ImageName = x.ImageName,
-                    ImageSrc = (x.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageName)
+                    ImageSrc = (x.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageName),
+                    UpdateImage = x.UpdateImage
                 })
                 .ToListAsync();
         }
@@ -64,7 +65,7 @@ namespace backend.Controllers
             {
                 user.ImageName = await SaveImage(user.ImageFile);
             }
-            else
+            else if (user.UpdateImage == true)
             {
                 user.ImageSrc = null;
             }

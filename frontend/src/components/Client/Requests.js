@@ -9,11 +9,11 @@ function Requests() {
     let requestList = []
 
     useEffect(() => {
-        axios.get('http://localhost:51404/api/User')
+        axios.get('http://localhost:5000/api/User')
             .then(res => {
                 let l = [];
                 for (const request of res.data)
-                    if (request.UserWantsAdmin === true) {
+                    if (request.wantsAdmin === true && request.role === 'client') {
                         l.push(request)
                     }
                 setRequests(l);
@@ -24,7 +24,7 @@ function Requests() {
     }, [])
 
     requestList = requests.map((item, _) => (
-        (item.UserWantsAdmin) ? <RequestCard connectedUser={item} requests={requests} setRequests={setRequests} key={item.UserId} /> : null
+        (item.wantsAdmin) ? <RequestCard connectedUser={item} requests={requests} setRequests={setRequests} key={item.id} /> : null
     ))
 
     if(requests.length === 0)

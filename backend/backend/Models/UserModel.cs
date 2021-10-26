@@ -16,8 +16,9 @@ namespace backend.Models
             Password = _request.Password;
             Role = _request.Role;
             WantsAdmin = _request.WantsAdmin;
-            ImageName = "";
+            ImageName = null;
             ImageFile = null;
+            UpdateImage = true;
         }
         public long Id { get; set; }
 
@@ -32,6 +33,8 @@ namespace backend.Models
         public bool WantsAdmin { get; set; }
 
         public string ImageName { get; set; }
+
+        public bool UpdateImage { get; set; }
 
         [NotMapped]
         public string ImageSrc { get; set; }
