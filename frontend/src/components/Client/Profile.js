@@ -80,6 +80,17 @@ function Profile({ connectedUser }) {
             ...values,
             imageSrc: defaultImageSrc
         })
+
+        const formData = new FormData()
+        formData.append('id', connectedUser.id)
+        formData.append('name', connectedUser.name)
+        formData.append('email', connectedUser.email)
+        formData.append('password', connectedUser.password)
+        formData.append('role', connectedUser.role)
+        formData.append('wantsAdmin', connectedUser.wantsAdmin)
+        formData.append('imageName', '')
+        formData.append('imageFile', '')
+        updateUser(formData)
     }
 
     const imageNotSet = () => {

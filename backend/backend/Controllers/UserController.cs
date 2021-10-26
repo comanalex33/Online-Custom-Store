@@ -66,7 +66,7 @@ namespace backend.Controllers
             }
             else
             {
-                user.ImageSrc = "";
+                user.ImageSrc = null;
             }
 
             _context.Entry(user).State = EntityState.Modified;
