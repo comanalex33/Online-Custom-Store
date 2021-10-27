@@ -37,8 +37,8 @@ function Faqs({connectedUser}) {
 
     const handleAddFaq = event => {
         let faq = {
-            FaqQuestion: question,
-            FaqAnswer: answer
+            question: question,
+            answer: answer
         }
 
         axios.post('http://localhost:5000/api/Faqs', faq)
@@ -66,13 +66,13 @@ function Faqs({connectedUser}) {
         //         <li>{item.FaqAnswer}</li>
         //     </ul>
         // </div>
-        <FaqCard position={(index % 2 === 0) ? 'flex-start' : 'flex-end'} FaqQuestion={item.FaqQuestion} FaqAnswer={item.FaqAnswer} key={item.FaqId}/>
+        <FaqCard position={(index % 2 === 0) ? 'flex-start' : 'flex-end'} FaqQuestion={item.question} FaqAnswer={item.answer} key={item.id}/>
     ))
 
     return (
         <div>
             {faqList}
-            {(connectedUser.Role === 'admin') ? <button id='fixed-button' onClick={() => setButtonAdd(true)}>Add Faq</button> : null }
+            {(connectedUser.role === 'admin') ? <button id='fixed-button' onClick={() => setButtonAdd(true)}>Add Faq</button> : null }
             <AddFaqPopup trigger={buttonAdd} setTrigger={setButtonAdd} faqs={faqs} setFaqs={setFaqs}>
                 <h2>Add FAQ</h2>
                 <div className='input-fields'>

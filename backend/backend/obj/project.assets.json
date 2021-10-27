@@ -1168,19 +1168,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amali\\.nuget\\packages\\": {}
+    "C:\\Users\\Alex\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amali\\Desktop\\CTI RO\\anul 3\\Online-Custom-Store\\backend\\backend\\backend.csproj",
+      "projectUniqueName": "D:\\Alex\\Facultate\\CTI an 3\\PW\\Online-Custom-Store\\backend\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\amali\\Desktop\\CTI RO\\anul 3\\Online-Custom-Store\\backend\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\amali\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amali\\Desktop\\CTI RO\\anul 3\\Online-Custom-Store\\backend\\backend\\obj\\",
+      "projectPath": "D:\\Alex\\Facultate\\CTI an 3\\PW\\Online-Custom-Store\\backend\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+      "outputPath": "D:\\Alex\\Facultate\\CTI an 3\\PW\\Online-Custom-Store\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\amali\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1247,16 +1247,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\amali\\Desktop\\CTI RO\\anul 3\\Online-Custom-Store\\backend\\backend\\obj\\project.nuget.cache : After parsing a value an unexpected character was encountered: \". Path 'expectedPackageFiles[32]', line 41, position 4."
-    }
-  ]
+  }
 }

@@ -12,6 +12,7 @@ function Profile({ connectedUser }) {
         imageFile: null
     }
 
+    const [requestAdmin, setRequestAdmin] = useState(connectedUser.wantsAdmin)
     const [values, setValues] = useState(initialValues)
 
     const updateUser = (formData) => {
@@ -35,6 +36,7 @@ function Profile({ connectedUser }) {
         formData.append('updateImage', false)
 
         updateUser(formData)
+        setRequestAdmin(true)
     }
 
     const showImage = event => {
@@ -101,7 +103,10 @@ function Profile({ connectedUser }) {
                 <p>Name: {connectedUser.name}</p>
                 <p>Email: {connectedUser.email}</p>
                 <p>Role: {connectedUser.role}</p>
-                {(connectedUser.role === 'client') ? <button onClick={handleRequestAdminAccess}>Request admin role</button> : null}
+                {(connectedUser.role === 'client') ? 
+                    ((requestAdmin == false)?
+                    <button onClick={handleRequestAdminAccess}>Request admin role</button> : <h3>Pending request</h3> )
+                    : null}
             </div>
             <div className='flex max-width end'>
                 <div className='flex vertical'>

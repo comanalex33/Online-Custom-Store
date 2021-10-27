@@ -80,3 +80,4 @@ C:\Users\amali\Desktop\CTI RO\anul 3\Online-Custom-Store\backend\backend\bin\Deb
 C:\Users\amali\Desktop\CTI RO\anul 3\Online-Custom-Store\backend\backend\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\amali\Desktop\CTI RO\anul 3\Online-Custom-Store\backend\backend\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\amali\Desktop\CTI RO\anul 3\Online-Custom-Store\backend\backend\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\obj\Debug\net5.0\backend.csproj.CopyComplete

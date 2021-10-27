@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 import '../css/Authentication.css'
- 
+import { Link } from 'react-router-dom';
+
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -12,29 +13,29 @@ function Login() {
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/User')
-    .then(res => {
-      setUsers(res.data)
-    })
-    .catch(err => {
-      console.log(err)  
-    })
+      .then(res => {
+        setUsers(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }, [])
 
   function found(username, password) {
-    for(const user of users) {
-      if(user.name === username && user.password === password){
+    for (const user of users) {
+      if (user.name === username && user.password === password) {
         console.log(user.name)
         return user
       }
     }
     return null
   }
- 
+
   // handle button click of login form
   const handleLoginButtonClick = () => {
     const user = found(username, password)
-    if(user !== null) {
-        history.push('/dashboard', { connectedUser: user });
+    if (user !== null) {
+      history.push('/dashboard', { connectedUser: user });
     }
     else
       alert("Wrong credentials")
@@ -46,33 +47,32 @@ function Login() {
 
   const handleUsernameChange = event => {
     setUsername(event.target.value)
-}
+  }
 
-const handlePasswordChange = event => {
+  const handlePasswordChange = event => {
     setPassword(event.target.value)
-}
+  }
 
   return (
     <div className='Container'>
       <p id='title'>Login page</p>
-      <div>
-        Username<br />
-        <input type="text" value={username} autoComplete="new-password" onChange={handleUsernameChange} />
+      <div className='Form'>
+        <div className='center'>
+          <input className="center_content input_text" placeholder='Username' type="text" value={username} autoComplete="new-password" onChange={handleUsernameChange} />
+        </div>
+        <div className='center'>
+          <input className="center_content input_text" placeholder='Password' type="password" value={password} autoComplete="new-password" onChange={handlePasswordChange} />
+        </div>
+        <div className='center'>
+          <button onClick={handleLoginButtonClick}>Login</button>
+        </div>
+        <div className='center go-to-registration'>
+          Don't have an account yet?
+          <Link to='/register'>Register</Link>
+        </div>
       </div>
-      <div style={{ marginTop: 10 }}>
-        Password<br />
-        <input type="password" value={password} autoComplete="new-password" onChange={handlePasswordChange} />
-      </div>
-    
-        <input type="button" value={'Login'} onClick={handleLoginButtonClick} /><br />
-      <br />
-      <div>
-          Don't have an account yet? 
-          <input type="button" value={'Register'} onClick={handleRegisterButtonClick} /><br />
-      </div>
-      
     </div>
   );
 }
- 
+
 export default Login;

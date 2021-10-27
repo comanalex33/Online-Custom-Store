@@ -79,3 +79,7 @@ select {
 #password {
     margin-bottom: 0;
 }
+
+.go-to-registration {
+    margin-top: 20px;
+}
