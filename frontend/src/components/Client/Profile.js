@@ -31,7 +31,7 @@ function Profile({ connectedUser }) {
         formData.append('password', connectedUser.password)
         formData.append('role', connectedUser.role)
         formData.append('wantsAdmin', true)
-        formData.append('imageName', (connectedUser.imageName == null)?'':connectedUser.imageName)
+        formData.append('imageName', (connectedUser.imageName == null) ? '' : connectedUser.imageName)
         formData.append('imageFile', null)
         formData.append('updateImage', false)
 
@@ -97,8 +97,8 @@ function Profile({ connectedUser }) {
     }
 
     return (
-        <div className='flex'>
-            <div>
+        <div className='profile-container-flex'>
+            {/* <div>
                 Welcome:
                 <p>Name: {connectedUser.name}</p>
                 <p>Email: {connectedUser.email}</p>
@@ -114,6 +114,33 @@ function Profile({ connectedUser }) {
                     {imageNotSet() ? <input type='file' onChange={showImage} id='input-file' /> : null}
                     <button onClick={handlePostImage}>Submit</button>
                     <button onClick={handleClearImage}>Clear</button>
+                </div>
+            </div> */}
+            <div className='profile-container'>
+                <div className='profile-image-container'>
+                    <div className='profile-image-content'>
+                        <img src={values.imageSrc} id='profile-image' />
+                    </div>
+                    <div className='profile-add-image'>
+                        {imageNotSet() ? <input type='file' onChange={showImage} id='input-file' /> : null}
+                    </div>
+                    <div className='profile-image-buttons'>
+                        <button onClick={handlePostImage}>Submit</button>
+                        <button onClick={handleClearImage}>Clear</button>
+                    </div>
+                </div>
+                <div className='profile-data-container'>
+                    <div className='profile-data-content'>
+                        <p className='profile-data-text'>Name:   {connectedUser.name}</p>
+                        <p className='profile-data-text'>Email:  {connectedUser.email}</p>
+                        <p className='profile-data-text'>Role:   {connectedUser.role}</p>
+                    </div>
+                    <div className='profile-request-admin'>
+                        {(connectedUser.role === 'client') ?
+                            ((requestAdmin == false) ?
+                                <button onClick={handleRequestAdminAccess}>Request admin role</button> : <h3>Pending request</h3>)
+                            : null}
+                    </div>
                 </div>
             </div>
         </div>
