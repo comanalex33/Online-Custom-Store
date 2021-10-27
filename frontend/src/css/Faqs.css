@@ -1,0 +1,46 @@
+#fixed-button {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    width: 10%;
+    height: 6%;
+    border-radius: 25px;
+    font-size: 15px;
+}
+
+.card {
+    width: 40%;
+    background-color: white;
+    margin: 10px;
+    padding: 0px 5px 5px 5px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+hr {
+    width: 100%;
+}
+
+h3 {
+    margin: 0;
+}
+
+.answer-text {
+    margin: 0px 15px 8px 15px;
+    font-size: 15px;
+}
+
+.card-container {
+    width: 100%;
+    display: flex;
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
