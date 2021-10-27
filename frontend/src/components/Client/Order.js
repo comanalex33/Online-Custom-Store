@@ -3,7 +3,7 @@ import React from 'react'
 const Order = () => {
     return (
         <div>
-            Order
+            Personalize with your photo and text
         </div>
     )
 }
