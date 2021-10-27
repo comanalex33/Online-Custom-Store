@@ -1,7 +1,7 @@
 ﻿
 namespace backend.Models
 {
-    public class User
+    public class Request
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -10,3 +10,4 @@ namespace backend.Models
         public string UserRole { get; set; }
     }
 }
+

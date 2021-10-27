@@ -64,3 +64,11 @@ C:\Users\amali\Desktop\CTI RO\anul 3\Online-Custom-Store\backend\backend\obj\Deb
 C:\Users\amali\Desktop\CTI RO\anul 3\Online-Custom-Store\backend\backend\obj\Debug\net5.0\ref\backend.dll
 C:\Users\amali\Desktop\CTI RO\anul 3\Online-Custom-Store\backend\backend\obj\Debug\net5.0\backend.pdb
 C:\Users\amali\Desktop\CTI RO\anul 3\Online-Custom-Store\backend\backend\obj\Debug\net5.0\backend.genruntimeconfig.cache
+D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\bin\Debug\net5.0\Humanizer.dll
+D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\Alex\Facultate\CTI an 3\PW\Online-Custom-Store\backend\backend\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

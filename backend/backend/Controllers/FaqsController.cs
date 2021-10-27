@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using backend.ModelRequest;
+using backend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,40 +15,28 @@ namespace backend.Controllers
     [ApiController]
     public class FaqsController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
+        private readonly AppDbContext _context;
 
-        public FaqsController(IConfiguration configuration)
+        public FaqsController(AppDbContext context)
         {
-            _configuration = configuration;
+            _context = context;
         }
 
         [HttpGet]
-        public JsonResult Get()
+        public async Task<ActionResult<IEnumerable<FaqModel>>> Get()
         {
-            string query = @"
-                select FaqId as ""FaqId"",
-                       FaqQuestion as ""FaqQuestion"",
-                       FaqAnswer as ""FaqAnswer""
-                from faqs
-            ";
+            return await _context.Faqs.ToListAsync();
+        }
 
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("Database");
-            NpgsqlDataReader myReader;
-            using (NpgsqlConnection myCon = new NpgsqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (NpgsqlCommand myCommand = new NpgsqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
+        [HttpPost]
+        public async Task<ActionResult<FaqModel>> PostTodoItem(FaqRequestModel requestFaq)
+        {
+            long Id = _context.Faqs.Count() + 1;
+            FaqModel faq = new FaqModel(Id, requestFaq);
+            _context.Faqs.Add(faq);
+            await _context.SaveChangesAsync();
 
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-
-            return new JsonResult(table);
+            return faq;
         }
     }
 }

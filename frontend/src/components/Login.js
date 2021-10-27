@@ -11,19 +11,21 @@ function Login() {
   const history = useHistory()
 
   useEffect(() => {
-    axios.get('http://localhost:51404/api/User')
+    axios.get('http://localhost:5000/api/User')
     .then(res => {
       setUsers(res.data)
     })
     .catch(err => {
-      console.log(err)
+      console.log(err)  
     })
   }, [])
 
   function found(username, password) {
     for(const user of users) {
-      if(user.UserName === username && user.UserPassword === password)
+      if(user.name === username && user.password === password){
+        console.log(user.name)
         return user
+      }
     }
     return null
   }
@@ -32,10 +34,7 @@ function Login() {
   const handleLoginButtonClick = () => {
     const user = found(username, password)
     if(user !== null) {
-      //if(user.UserRole === 'client' )
         history.push('/dashboard', { connectedUser: user });
-      //else
-        //history.push('/admin_dashboard', { connectedUser: user });
     }
     else
       alert("Wrong credentials")
