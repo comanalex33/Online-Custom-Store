@@ -60,21 +60,15 @@ function Faqs({connectedUser}) {
     }
 
     const faqList = faqs.map((item, index) => (
-        // <div key={item.FaqId}>
-        //     <li>{item.FaqQuestion}</li>
-        //     <ul>
-        //         <li>{item.FaqAnswer}</li>
-        //     </ul>
-        // </div>
         <FaqCard position={(index % 2 === 0) ? 'flex-start' : 'flex-end'} FaqQuestion={item.question} FaqAnswer={item.answer} key={item.id}/>
     ))
 
     return (
         <div>
             {faqList}
-            {(connectedUser.role === 'admin') ? <button id='fixed-button' onClick={() => setButtonAdd(true)}>Add Faq</button> : null }
+            {(connectedUser.role === 'admin') ? <button id='faq-fixed-button' onClick={() => setButtonAdd(true)}>Add Faq</button> : null }
             <AddFaqPopup trigger={buttonAdd} setTrigger={setButtonAdd} faqs={faqs} setFaqs={setFaqs}>
-                <h2>Add FAQ</h2>
+                <h2 className='add-faq-title'>Add FAQ</h2>
                 <div className='input-fields'>
                 <button className='close-btn' onClick={handleClose}>Close</button>
                 <input type='text' placeholder='Question' className='input-text' value={question} onChange={handleQuestionChange}></input>

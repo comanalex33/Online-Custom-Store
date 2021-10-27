@@ -5,25 +5,25 @@ import product_card from '../Product/ProductData'
 import '../../css/Products.css'
 
 
-function Products () {
+function Products() {
 
-const history = useHistory()
+    const history = useHistory()
 
-const handlePersonalizeButton = () => {
-    history.push('/dashboard/order');
-  }
+    const handlePersonalizeButton = () => {
+        history.push('/dashboard/order');
+    }
 
     //const main_content = () => {
     console.log(product_card);
-    const listItems = product_card.map((item) => 
+    const listItems = product_card.map((item) =>
         <div className="card" key={item.id}>
 
             <div className="card_img">
-                <img src={item.thumb} alt=""/>
+                <img src={item.thumb} alt="" />
             </div>
             <div className="card_header">
-                <h2>{item.product_name}</h2>
-                <p>{item.description}</p>
+                <h2 className='product-item-title'>{item.product_name}</h2>
+                <div className='product-description'>{item.description}</div>
                 <p className="price">{item.price}<span>{item.currency}</span></p>
                 <div className="btn" onClick={handlePersonalizeButton}>Personalize
                 </div>
@@ -34,7 +34,7 @@ const handlePersonalizeButton = () => {
     );
 
 
-    return(
+    return (
         <div className="main_content">
             {listItems}
         </div>

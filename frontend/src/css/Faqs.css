@@ -1,0 +1,28 @@
+.add-faq-title {
+    top: 10px;
+}
+
+.faq-card {
+    background-color:#baf2f7;
+    border: 1px solid;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.faq-answer-text {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#faq-fixed-button {
+    width: fit-content;
+    height: fit-content;
+    font-size: x-large;
+    margin: 30px;
+    padding: 10px;
+    position: fixed;
+    border-radius: 30px;
+    bottom: 0;
+    right: 0;
+}

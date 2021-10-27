@@ -9,10 +9,10 @@ function FaqCard(props) {
 
     return (
         <div className={position + ' card-container'}>
-            <div className='card'>
+            <div className='faq-card'>
                 <h3>{question}</h3>
                 <hr></hr>
-                <div className='answer-text'>
+                <div className='faq-answer-text'>
                     {answer}
                 </div>
             </div>
