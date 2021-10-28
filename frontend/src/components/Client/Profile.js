@@ -31,13 +31,15 @@ function Profile({ connectedUser }) {
         formData.append('password', connectedUser.password)
         formData.append('role', connectedUser.role)
         formData.append('wantsAdmin', true)
-        formData.append('imageName', (connectedUser.imageName == null) ? '' : connectedUser.imageName)
+        formData.append('imageName', (connectedUser.imageName == null) ? 'something' : connectedUser.imageName)
         formData.append('imageFile', null)
         formData.append('updateImage', false)
 
         updateUser(formData)
         setRequestAdmin(true)
     }
+
+    console.log(values)
 
     const showImage = event => {
         if (event.target.files && event.target.files[0]) {
@@ -96,26 +98,12 @@ function Profile({ connectedUser }) {
         return values.imageSrc === defaultImageSrc
     }
 
+    const handleDeleteProfileButton = event => {
+        
+    }
+
     return (
         <div className='profile-container-flex'>
-            {/* <div>
-                Welcome:
-                <p>Name: {connectedUser.name}</p>
-                <p>Email: {connectedUser.email}</p>
-                <p>Role: {connectedUser.role}</p>
-                {(connectedUser.role === 'client') ? 
-                    ((requestAdmin == false)?
-                    <button onClick={handleRequestAdminAccess}>Request admin role</button> : <h3>Pending request</h3> )
-                    : null}
-            </div>
-            <div className='flex max-width end'>
-                <div className='flex vertical'>
-                    <img src={values.imageSrc} className='image-container' id='profile-image' />
-                    {imageNotSet() ? <input type='file' onChange={showImage} id='input-file' /> : null}
-                    <button onClick={handlePostImage}>Submit</button>
-                    <button onClick={handleClearImage}>Clear</button>
-                </div>
-            </div> */}
             <div className='profile-container'>
                 <div className='profile-image-container'>
                     <div className='profile-image-content'>
@@ -135,12 +123,18 @@ function Profile({ connectedUser }) {
                         <p className='profile-data-text'>Email:  {connectedUser.email}</p>
                         <p className='profile-data-text'>Role:   {connectedUser.role}</p>
                     </div>
-                    <div className='profile-request-admin'>
-                        {(connectedUser.role === 'client') ?
-                            ((requestAdmin == false) ?
-                                <button onClick={handleRequestAdminAccess}>Request admin role</button> : <h3>Pending request</h3>)
-                            : null}
+                    <div className='profile-buttons'>
+                        <div className='profile-delete-account'>
+                            {(connectedUser.role === 'client') ?
+                                ((requestAdmin == false) ?
+                                    <button onClick={handleRequestAdminAccess}>Request admin role</button> : <h3>Pending request</h3>)
+                                : null}
+                        </div>
+                        <div className='profile-request-admin'>
+                        <button id='delete-account-button' onClick={handleDeleteProfileButton}>Delete account</button>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -47,10 +47,33 @@ namespace backend.Controllers
                 .ToListAsync();
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserModel>> GetById(long id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if(user == null)
+            {
+                return NotFound();
+            }
+
+            user.ImageSrc = (user.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, user.ImageName);
+
+            return user;
+        }
+
         [HttpPost]
-        public async Task<ActionResult<UserModel>> PostTodoItem(UserRequestModel requestUser)
+        public async Task<ActionResult<UserModel>> Post(UserRequestModel requestUser)
         {
             long Id = _context.Users.Count() + 1;
+
+            var userCheck = await _context.Users.FindAsync(Id);
+            while(userCheck != null)
+            {
+                Id = Id + 1;
+                userCheck = await _context.Users.FindAsync(Id);
+            }
+
             UserModel user = new UserModel(Id, requestUser);
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -59,7 +82,7 @@ namespace backend.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> PutTodoItem([FromForm] UserModel user)
+        public async Task<IActionResult> Put([FromForm] UserModel user)
         {
             if (user.ImageFile != null)
             {
@@ -89,6 +112,20 @@ namespace backend.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<UserModel>> Delete(long id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if(user == null)
+            {
+                return NotFound();
+            }
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return user;
         }
 
         private bool UserExists(long id) => _context.Users.Any(e => e.Id == id);

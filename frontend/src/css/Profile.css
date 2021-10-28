@@ -79,12 +79,34 @@
     font-size: 25px;
 }
 
-.profile-request-admin {
+.profile-buttons {
     width: 100%;
     height: 15%;
 
     display: flex;
+}
+
+.profile-delete-account {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    padding-left: 100px;
+}
+
+.profile-request-admin {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
     justify-content: end;
-    align-items: center;
+    align-items: flex-start;
     padding-right: 100px;
+}
+
+#delete-account-button {
+    background: red;
+    color: white;
 }
