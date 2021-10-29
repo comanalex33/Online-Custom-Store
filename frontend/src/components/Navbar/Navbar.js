@@ -30,9 +30,6 @@ const Navbar = ({connectedUser}) => {
                     <NavLink to="/dashboard/favourites">
                         Favourites
                     </NavLink>
-                    <NavLink to="/dashboard/order">
-                        Order
-                    </NavLink>
                     <NavLink to="/dashboard/faqs">
                         Faqs
                     </NavLink>

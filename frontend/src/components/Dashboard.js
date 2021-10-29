@@ -21,7 +21,7 @@ function Dashboard({ location }) {
         <Switch>
           <Route path='/dashboard' exact component={Home}  />
           <Route path='/dashboard/favourites' exact component={Favourites} />
-          <Route path='/dashboard/order' component={Order} />
+          <Route path='/dashboard/order' component={(props) => (<Order {...props}/>)} />
           <Route path='/dashboard/products' component={Products} />
           <Route path='/dashboard/faqs' render={(props) => (<Faqs {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/profile' render={(props) => (<Profile {...props} connectedUser={connectedUser}/>)} />
