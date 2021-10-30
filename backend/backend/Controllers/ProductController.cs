@@ -48,6 +48,8 @@ namespace backend.Controllers
                 .ToListAsync();
         }
 
+        
+
         [HttpPost]
         public async Task<ActionResult<ProductModel>> PostTodoItem([FromForm] ProductRequestModel productRequest)
         {
@@ -79,5 +81,43 @@ namespace backend.Controllers
             }
             return imageName;
         }
-    }
+
+        [HttpDelete]
+        public async Task<ActionResult<ProductModel>> Delete(long id)
+        {
+            try
+            {
+                var productToDelete = await _context.Products
+            .FirstOrDefaultAsync(e => e.Id == id);
+
+                if (productToDelete == null)
+                {
+                    return NotFound($"Employee with Id = {id} not found");
+                }
+
+                return await DeleteItem(id);
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
+        }
+
+        [NonAction]
+        public async Task<ActionResult<ProductModel>> DeleteItem(long id)
+        {
+            var result = await _context.Products
+                .FirstOrDefaultAsync(e => e.Id == id);
+            if (result != null)
+            {
+                _context.Products.Remove(result);
+                await _context.SaveChangesAsync();
+                return result;
+            }
+            return null;
+        }
+
+}
 }
