@@ -41,7 +41,7 @@ namespace backend.Controllers
                     Role = x.Role,
                     WantsAdmin = x.WantsAdmin,
                     ImageName = x.ImageName,
-                    ImageSrc = (x.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageName),
+                    ImageSrc = (x.ImageName == null) ? String.Format("{0}://{1}{2}/DefaultImages/default_image.jpg", Request.Scheme, Request.Host, Request.PathBase) : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageName),
                     UpdateImage = x.UpdateImage
                 })
                 .ToListAsync();
@@ -57,7 +57,7 @@ namespace backend.Controllers
                 return NotFound();
             }
 
-            user.ImageSrc = (user.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, user.ImageName);
+            user.ImageSrc = (user.ImageName == null) ? String.Format("{0}://{1}{2}/DefaultImages/default_image.jpg", Request.Scheme, Request.Host, Request.PathBase) : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, user.ImageName);
 
             return user;
         }

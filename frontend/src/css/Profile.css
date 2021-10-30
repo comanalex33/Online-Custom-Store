@@ -86,6 +86,12 @@
     display: flex;
 }
 
+#profile-picture-error-message {
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+}
+
 .profile-delete-account {
     width: 50%;
     height: 100%;
@@ -109,4 +115,31 @@
 #delete-account-button {
     background: red;
     color: white;
+}
+
+#title-accept-delete {
+    position: relative;
+    text-align: center;
+    left: 0px;
+    top: 0px;
+}
+
+#button-accept {
+    float: left;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+#button-reject {
+    float: right;
+    margin-top: 30px;
+    margin-right: 5 0px;
+}
+
+.color-red {
+    color: red;
+}
+
+.color-green {
+    color: green;
 }
