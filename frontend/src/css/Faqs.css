@@ -1,13 +1,46 @@
+.faq-page {
+    height: 88vh;
+}
+
 .add-faq-title {
     top: 10px;
 }
 
+.faq-card-container {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
 .faq-card {
+    width: 80%;
     background-color:#baf2f7;
     border: 1px solid;
     margin: 10px;
     border-radius: 10px;
     padding: 5px;
+
+    display: flex;
+}
+
+.faq-data {
+    height: 100%;
+    width: 80%;
+}
+
+.faq-delete-container {
+    height: 100%;
+    width: 20%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#faq-delete-button {
+    background-color: red;
+    color: white;
 }
 
 .faq-answer-text {

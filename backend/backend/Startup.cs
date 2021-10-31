@@ -63,6 +63,12 @@ namespace backend
                 RequestPath = "/Images"
             });
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "DefaultImages")),
+                RequestPath = "/DefaultImages"
+            });
+
             app.UseRouting();
 
             app.UseAuthorization();
