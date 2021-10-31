@@ -1,0 +1,64 @@
+.home-page-container {
+    display: flex;
+}
+
+.home-slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 88vh;
+    width: 65%;
+}
+
+.home-data-container {
+    height: 88vh;
+    width: 35%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.home-page-title {
+    color: blue;
+    padding-bottom: 30px;
+
+    width: 100%;
+    text-align: center; 
+}
+
+.home-description-text {
+    width: 100%;
+    font-size: 18px;
+    padding: 30px;
+    text-align: center;
+}
+
+.home-page-since {
+    padding-top: 50px;
+    margin: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+#home-page-year {
+    color: red;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.home-page-creators {
+    padding-bottom: 20px;
+    margin: 0px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+}
