@@ -1168,19 +1168,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alex\\.nuget\\packages\\": {}
+    "C:\\Users\\amali\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Alex\\Facultate\\CTI an 3\\PW\\Online-Custom-Store\\backend\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\amali\\Desktop\\CTI RO\\anul 3\\Online-Custom-Store\\backend\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "D:\\Alex\\Facultate\\CTI an 3\\PW\\Online-Custom-Store\\backend\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "D:\\Alex\\Facultate\\CTI an 3\\PW\\Online-Custom-Store\\backend\\backend\\obj\\",
+      "projectPath": "C:\\Users\\amali\\Desktop\\CTI RO\\anul 3\\Online-Custom-Store\\backend\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\amali\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\amali\\Desktop\\CTI RO\\anul 3\\Online-Custom-Store\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\amali\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1247,7 +1247,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

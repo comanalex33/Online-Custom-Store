@@ -9,5 +9,6 @@ namespace backend.Models
 
         public DbSet<UserModel> Users { get; set; }
         public DbSet<FaqModel> Faqs { get; set; }
+        public DbSet<ProductModel> Products { get; set; }
     }
 }
