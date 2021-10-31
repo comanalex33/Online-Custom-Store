@@ -97,7 +97,7 @@
     height: 100%;
 
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: flex-start;
     padding-left: 100px;
 }
@@ -133,7 +133,7 @@
 #button-reject {
     float: right;
     margin-top: 30px;
-    margin-right: 5 0px;
+    margin-right: 50px;
 }
 
 .color-red {

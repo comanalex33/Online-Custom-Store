@@ -32,8 +32,30 @@ namespace backend.Controllers
         public async Task<ActionResult<FaqModel>> PostTodoItem(FaqRequestModel requestFaq)
         {
             long Id = _context.Faqs.Count() + 1;
+             
+            var faqCheck = await _context.Faqs.FindAsync(Id);
+            while (faqCheck != null)
+            {
+                Id = Id + 1;
+                faqCheck = await _context.Faqs.FindAsync(Id);
+            }
+
             FaqModel faq = new FaqModel(Id, requestFaq);
             _context.Faqs.Add(faq);
+            await _context.SaveChangesAsync();
+
+            return faq;
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<FaqModel>> Delete(long id)
+        {
+            var faq = await _context.Faqs.FindAsync(id);
+            if (faq == null)
+            {
+                return NotFound();
+            }
+            _context.Faqs.Remove(faq);
             await _context.SaveChangesAsync();
 
             return faq;
