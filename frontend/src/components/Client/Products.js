@@ -39,11 +39,14 @@ function Products({connectedUser}) {
     }
 
     const handleDeleteButton = id => {
-        console.log(id)
+        if(window.confirm("Are you sure you want to delete?"))
+        {
+            console.log(id)
             axios.delete('http://localhost:5000/api/Product/',{ params: { id: id } })
             .then((response) => {
                 console.log(response);
             })
+        }
     }
 
     const productsList= products.map((item) => (
