@@ -108,7 +108,7 @@ body {
 
 .main_content .card .card_header .price {
   font-size: 25px;
-  color: #fe8033;
+  color: rgb(11, 117, 255);
 }
 
 .main_content .card .card_header .price span {
@@ -125,7 +125,7 @@ body {
 }
 
 .main_content .card:hover .btn {
-  background-color: #fe8033;
+  background-color: rgb(11, 117, 255);
   color: #fff;
 }
 
@@ -155,12 +155,13 @@ body {
   text-align: center;
   padding: 3px;
 }
- .add_product{
+.add_product{
     width: 130px;
     height: 35px;
     font-size: 14px;
     background-color: #2d343e;
     color: rgba(255, 255, 255, 0.5);
     margin-top: 30px;
-    margin-left:1400px;
+    margin-left: 50px;
+    margin: 100 px;
  }

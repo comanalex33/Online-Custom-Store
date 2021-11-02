@@ -14,8 +14,6 @@ namespace backend.ModelRequest
         public string Description { get; set; }
         public long Price { get; set; }
 
-        public bool UpdateImage { get; set; }
-
         [NotMapped]
         public IFormFile ImageFile { get; set; }
     }

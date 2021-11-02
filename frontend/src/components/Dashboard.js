@@ -9,6 +9,7 @@ import Home from './Client/Home';
 import '../css/Client.css'
 import Faqs from './Client/Faqs';
 import Requests from './Client/Requests';
+import AddProduct from './Client/AddProduct';
 
 function Dashboard({ location }) {
 
@@ -21,6 +22,7 @@ function Dashboard({ location }) {
         <Switch>
           <Route path='/dashboard' exact component={Home}  />
           <Route path='/dashboard/favourites' exact component={Favourites} />
+          <Route path='/dashboard/add' exact component={AddProduct} />
           <Route path='/dashboard/order' render={(props) => (<Order {...props}/>)} />
           <Route path='/dashboard/products' render={(props) => (<Products {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/faqs' render={(props) => (<Faqs {...props} connectedUser={connectedUser}/>)} />
