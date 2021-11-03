@@ -29,7 +29,7 @@
     border-radius: 50%;
     margin: 20px 0px 20px 0px;
     width: 200px;
-    height: auto;
+    height: 200px;
 }
 
 .remove-favourite {
@@ -43,3 +43,11 @@
 
 }
 
+.remove-favourite:hover {
+    background-color:orangered;
+    color: black;
+}
+
+.remove-favourite:active {
+    background-color: white;
+}

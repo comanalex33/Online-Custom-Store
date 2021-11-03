@@ -6,6 +6,7 @@ function Favourites({connectedUser}) {
 
     const [products, setProducts] = useState([])
     const [render, setRender] = useState(false)
+    let favList = []
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/Favourites/${connectedUser.id}`)
@@ -18,12 +19,15 @@ function Favourites({connectedUser}) {
             })
     }, [render])
 
-    const favList = products.map((item, index) => (
-        <FavouriteCard item={item} key={item.id} />
+    favList = products.map((item, index) => (
+        <FavouriteCard item={item} products={products} setProducts={setProducts} key={item.id} />
     ))
 
+    if(products.length === 0)
+         favList = <div className='requests-container'><div className='no-requests'><h1>No favourite products</h1></div></div>
+
     return (
-        <div>
+        <div className='max-height'>
             {favList}
         </div>
     )

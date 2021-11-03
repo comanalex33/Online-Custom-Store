@@ -40,7 +40,6 @@ namespace backend.Controllers
                                 Price = x.Price,
                                 ImageName = x.ImageName,
                                 ImageSrc = (x.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageName),
-                                UpdateImage = x.UpdateImage
                             })
                             .ToListAsync();
         }

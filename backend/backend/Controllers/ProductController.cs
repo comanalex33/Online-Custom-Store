@@ -52,7 +52,7 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductModel>> PostTodoItem([FromForm] ProductRequestModel productRequest)
         {
-            long Id = _context.Faqs.Count() + 1;
+            long Id = _context.Products.Count() + 1;
 
             var faqCheck = await _context.Products.FindAsync(Id);
             while (faqCheck != null)

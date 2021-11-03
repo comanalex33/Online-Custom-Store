@@ -59,13 +59,11 @@ function Products({connectedUser}) {
         }
         axios.post('http://localhost:5000/api/Favourites', favourite)
             .then(res => {
-                console.log(res.data)
+                alert("Produs adaugat la favorite")
             })
             .catch(err => {
                 if(err.response.status === 400)
-                    console.log('haha')
-                //if(err.response)
-                    //console.log(err.response.status)
+                    alert("Produsul a fost adaugat deja la favorite!")
             });
     }
 
