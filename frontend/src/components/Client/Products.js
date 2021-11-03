@@ -49,6 +49,23 @@ function Products({connectedUser}) {
         }
     }
 
+    const handleAddToFavourites = id => {
+        let favourite = {
+            userId: connectedUser.id,
+            productId: id
+        }
+        axios.post('http://localhost:5000/api/Favourites', favourite)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => {
+                if(err.response.status === 400)
+                    console.log('haha')
+                //if(err.response)
+                    //console.log(err.response.status)
+            });
+    }
+
     const productsList= products.map((item) => (
         <div className="card" key={item.id}>
         <div className="card_img">
@@ -63,7 +80,7 @@ function Products({connectedUser}) {
             </div> : <div className="btn" onClick={() => handleDeleteButton(item.id)}>Delete
             </div>}
             {(connectedUser.role !== 'admin') ?
-            <div className="btn">Add to favourites</div>:null}
+            <div className="btn" onClick={() => handleAddToFavourites(item.id)}>Add to favourites</div>:null}
         </div>
     </div>
     ))

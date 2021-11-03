@@ -129,6 +129,11 @@ body {
   color: #fff;
 }
 
+.main_content .card:hover .btn:hover {
+  background-color: wheat;
+  color: black;
+}
+
 .btn {
   width: 130px;
   height: 35px;

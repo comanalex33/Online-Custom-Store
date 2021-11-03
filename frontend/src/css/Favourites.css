@@ -1,0 +1,45 @@
+.favourites-card {
+    background-color: aqua;
+    border-radius: 20px;
+    margin: 20px 50px 20px 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.image-container {
+    height: 100%;
+    width: 40%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-container {
+    position: relative;
+    height: auto;
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#favourite-card-image {
+    border-radius: 50%;
+    margin: 20px 0px 20px 0px;
+    width: 200px;
+    height: auto;
+}
+
+.remove-favourite {
+    background-color: red;
+    color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 20px;
+    margin-right: 40px;
+
+}
+

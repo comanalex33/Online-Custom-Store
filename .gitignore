@@ -1,6 +1,6 @@
 backend/backend/Images/
 backend/backend.sln
-backend/.vs/
-backend/backend/bin/
-backend/backend/obj/
+backend/.vs/*
+backend/backend/bin/*
+backend/backend/obj/*
 .suo

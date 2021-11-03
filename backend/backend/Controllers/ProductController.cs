@@ -95,8 +95,19 @@ namespace backend.Controllers
                     return NotFound($"Employee with Id = {id} not found");
                 }
 
-                return await DeleteItem(id);
+                var deletedProduct = await DeleteItem(id);
 
+                while(true)
+                {
+                    var favouriteItem = await _context.Favourites.FirstOrDefaultAsync(e => e.ProductId == id);
+
+                    if (favouriteItem == null)
+                        break;
+
+                    await DeleteFavourite(favouriteItem.Id);
+                }
+
+                return deletedProduct;
             }
             catch (Exception)
             {
@@ -119,5 +130,19 @@ namespace backend.Controllers
             return null;
         }
 
-}
+        [NonAction]
+        public async Task<ActionResult<FavouriteModel>> DeleteFavourite(long id)
+        {
+            var result = await _context.Favourites
+                .FirstOrDefaultAsync(e => e.Id == id);
+            if (result != null)
+            {
+                _context.Favourites.Remove(result);
+                await _context.SaveChangesAsync();
+                return result;
+            }
+            return null;
+        }
+
+    }
 }

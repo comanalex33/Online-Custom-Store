@@ -20,7 +20,7 @@ function Dashboard({ location }) {
         <Navbar connectedUser={connectedUser}/>
         <Switch>
           <Route path='/dashboard' exact component={Home}  />
-          <Route path='/dashboard/favourites' exact component={Favourites} />
+          <Route path='/dashboard/favourites' render={(props) => (<Favourites {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/order' render={(props) => (<Order {...props}/>)} />
           <Route path='/dashboard/products' render={(props) => (<Products {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/faqs' render={(props) => (<Faqs {...props} connectedUser={connectedUser}/>)} />

@@ -30,12 +30,29 @@ namespace backend.Controllers
         public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductsByUserId(long userId)
         {
             var list = _context.Favourites.Where(fav => fav.UserId == userId).Select(fav => fav.ProductId).ToList();
-            return await _context.Products.Where(prod => list.Contains(prod.Id)).ToListAsync();
+            return await _context.Products.Where(prod => list.Contains(prod.Id))
+                            .Select(x => new ProductModel()
+                            {
+                                Id = x.Id,
+                                Name = x.Name,
+                                Category = x.Category,
+                                Description = x.Description,
+                                Price = x.Price,
+                                ImageName = x.ImageName,
+                                ImageSrc = (x.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageName),
+                                UpdateImage = x.UpdateImage
+                            })
+                            .ToListAsync();
         }
 
         [HttpPost]
         public async Task<ActionResult<FavouriteModel>> Post(FavouriteRequestModel requestFavourite)
         {
+            var list = _context.Favourites.Where(fav => fav.ProductId == requestFavourite.ProductId && fav.UserId == requestFavourite.UserId).ToList();
+            if (list.Count != 0)
+            {
+                return BadRequest();
+            }
             long Id = _context.Favourites.Count() + 1;
 
             var favouriteCheck = await _context.Favourites.FindAsync(Id);
