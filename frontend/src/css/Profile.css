@@ -11,7 +11,7 @@
     border-radius: 30px;
     width: 80%;
     height: 80%;
-    background: yellow;
+    background: rgb(186, 233, 255);
 
     display: flex;
     flex-direction: row;

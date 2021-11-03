@@ -43,7 +43,6 @@ namespace backend.Controllers
                     Price = x.Price,
                     ImageName = x.ImageName,
                     ImageSrc = (x.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageName),
-                    UpdateImage = x.UpdateImage
                 })
                 .ToListAsync();
         }
@@ -53,16 +52,20 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductModel>> PostTodoItem([FromForm] ProductRequestModel productRequest)
         {
-            long Id = _context.Products.Count() + 1;
+            long Id = _context.Faqs.Count() + 1;
+
+            var faqCheck = await _context.Products.FindAsync(Id);
+            while (faqCheck != null)
+            {
+                Id = Id + 1;
+                faqCheck = await _context.Products.FindAsync(Id);
+            }
             ProductModel product = new ProductModel(Id, productRequest);
             if (product.ImageFile != null)
             {
                 product.ImageName = await SaveImage(product.ImageFile);
             }
-            else if (product.UpdateImage == true)
-            {
-                product.ImageSrc = null;
-            }
+            
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 

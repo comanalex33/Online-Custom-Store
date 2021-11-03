@@ -16,7 +16,6 @@ namespace backend.Models
             Description = _request.Description;
             Price = _request.Price;
             ImageFile = _request.ImageFile;
-            UpdateImage =_request.UpdateImage;
         }
         public long Id { get; set; }
 
@@ -30,8 +29,7 @@ namespace backend.Models
 
         public string ImageName { get; set; }
 
-        public bool UpdateImage { get; set; }
-
+        
         [NotMapped]
         public string ImageSrc { get; set; }
 
