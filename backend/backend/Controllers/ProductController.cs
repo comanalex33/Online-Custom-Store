@@ -95,7 +95,7 @@ namespace backend.Controllers
 
                 if (productToDelete == null)
                 {
-                    return NotFound($"Employee with Id = {id} not found");
+                    return NotFound($"Product with Id = {id} not found");
                 }
 
                 var deletedProduct = await DeleteItem(id);

@@ -54,6 +54,27 @@ namespace backend.Migrations
                     b.ToTable("Favourites");
                 });
 
+            modelBuilder.Entity("backend.Models.OrderProductModel", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("text");
+
+                    b.Property<long>("ProductId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderProducts");
+                });
+
             modelBuilder.Entity("backend.Models.ProductModel", b =>
                 {
                     b.Property<long>("Id")
@@ -75,9 +96,6 @@ namespace backend.Migrations
 
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
-
-                    b.Property<bool>("UpdateImage")
-                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
@@ -105,9 +123,6 @@ namespace backend.Migrations
 
                     b.Property<string>("Role")
                         .HasColumnType("text");
-
-                    b.Property<bool>("UpdateImage")
-                        .HasColumnType("boolean");
 
                     b.Property<bool>("WantsAdmin")
                         .HasColumnType("boolean");
