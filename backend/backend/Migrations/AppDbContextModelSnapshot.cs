@@ -70,6 +70,9 @@ namespace backend.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("text");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.ToTable("OrderProducts");

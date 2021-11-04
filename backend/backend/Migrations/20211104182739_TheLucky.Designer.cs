@@ -9,8 +9,8 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211104160121_Last")]
-    partial class Last
+    [Migration("20211104182739_TheLucky")]
+    partial class TheLucky
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -71,6 +71,9 @@ namespace backend.Migrations
 
                     b.Property<string>("Text")
                         .HasColumnType("text");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

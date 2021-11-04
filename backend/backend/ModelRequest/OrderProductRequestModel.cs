@@ -9,6 +9,7 @@ namespace backend.ModelRequest
     public class OrderProductRequestModel
     {
         public long ProductId { get; set; }
+        public long UserId { get; set; }
         public string Text { get; set; }
         public IFormFile ImageFile { get; set; }
     }
