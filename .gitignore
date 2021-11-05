@@ -1,4 +1,5 @@
 backend/backend/Images/
+backend/backend/Migrations/
 backend/backend.sln
 backend/.vs/*
 backend/backend/bin/*
