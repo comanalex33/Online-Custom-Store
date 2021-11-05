@@ -64,6 +64,12 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<UserModel>> Post(UserRequestModel requestUser)
         {
+            var list = _context.Users.Where(user => user.Name == requestUser.Name).ToList();
+            if (list.Count != 0)
+            {
+                return BadRequest();
+            }
+
             long Id = _context.Users.Count() + 1;
 
             var userCheck = await _context.Users.FindAsync(Id);

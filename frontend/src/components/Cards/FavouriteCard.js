@@ -38,10 +38,10 @@ function FavouriteCard(props) {
                 <img src={favourite.imageSrc} id='favourite-card-image' />
             </div>
             <div className='data-container'>
-                <p>Name: {favourite.name}</p>
-                <p>Category: {favourite.category}</p>
-                <p>Description: {favourite.description}</p>
-                <p>Price: {favourite.price}</p>
+                <div className='favourite-data-item'><span className='bold'>Name</span>: {favourite.name}</div>
+                <div className='favourite-data-item'><span className='bold'>Category</span>: {favourite.category}</div>
+                <div className='favourite-data-item'><span className='bold'>Description</span>: {favourite.description}</div>
+                <div className='favourite-data-item'><span className='bold'>Price</span>: {favourite.price}</div>
                 <button className='remove-favourite' onClick={handleRemoveFromFavourites}>Remove</button>
             </div>
         </div>
