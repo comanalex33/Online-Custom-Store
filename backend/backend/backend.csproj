@@ -35,6 +35,7 @@
   <ItemGroup>
     <Folder Include="Images\" />
     <Folder Include="DefaultImages\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

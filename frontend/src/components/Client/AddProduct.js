@@ -26,18 +26,53 @@ function AddProduct() {
         formData.append('price', price)
         formData.append('imageFile', selectedFile)
     
-        axios.post('http://localhost:5000/api/Product', formData)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.log(err)
-            });
-
-        products.push(formData)
-        setProducts(products)
+        if(name ==='')
+        {
+            alert("Name field is empty!");
+        }
+            else{
+                if(category === '')
+            {
+                alert("Category field is empty!");
+            }
+                else{
+                    if(description === '')
+                {
+                    alert("Description field is empty!");
+                }
+                    else{
+                        if(price === '')
+                    {
+                        alert("Price field is empty!");
+                    }
+                    else{
+                        if(selectedFile===null)
+                        {
+                            alert("Image file is empty!")
+                        }
+                    
+                        else{
+                            axios.post('http://localhost:5000/api/Product', formData)
+                            .then(res => {
+                                console.log(res);
+                                alert("The product was succesfully added!");
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            });
+                            products.push(formData);
+                            setProducts(products)
+                        
+                            history.push('/dashboard/products');
+                        
+                        }
+                    }
+                }
+            }
+        }
+       
         
-        history.push('/dashboard/products');
+        
     }
     const handleNameChange = event => {
         setName(event.target.value)

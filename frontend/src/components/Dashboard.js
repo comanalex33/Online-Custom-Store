@@ -10,6 +10,7 @@ import '../css/Client.css'
 import Faqs from './Client/Faqs';
 import Requests from './Client/Requests';
 import AddProduct from './Client/AddProduct';
+import ShoppingCart from './Client/ShoppingCart';
 
 function Dashboard({ location }) {
 
@@ -23,7 +24,8 @@ function Dashboard({ location }) {
           <Route path='/dashboard' exact component={Home}  />
           <Route path='/dashboard/favourites' render={(props) => (<Favourites {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/add' exact component={AddProduct} />
-          <Route path='/dashboard/order' render={(props) => (<Order {...props}/>)} />
+          <Route path='/dashboard/cart' render={(props) => (<ShoppingCart {...props} connectedUser={connectedUser}/>)} />
+          <Route path='/dashboard/order' render={(props) => (<Order {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/products' render={(props) => (<Products {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/faqs' render={(props) => (<Faqs {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/profile' render={(props) => (<Profile {...props} connectedUser={connectedUser}/>)} />

@@ -18,7 +18,7 @@ namespace backend.Models
             WantsAdmin = _request.WantsAdmin;
             ImageName = null;
             ImageFile = null;
-            UpdateImage = true;
+         
         }
         public long Id { get; set; }
 
@@ -34,7 +34,6 @@ namespace backend.Models
 
         public string ImageName { get; set; }
 
-        public bool UpdateImage { get; set; }
 
         [NotMapped]
         public string ImageSrc { get; set; }
