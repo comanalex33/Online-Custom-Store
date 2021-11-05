@@ -47,7 +47,22 @@ namespace backend.Controllers
                 .ToListAsync();
         }
 
-        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProductModel>> GetById(long id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            product.ImageSrc = (product.ImageName == null) ? String.Format("{0}://{1}{2}/DefaultImages/default_image.jpg", Request.Scheme, Request.Host, Request.PathBase) : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, product.ImageName);
+
+            return product;
+        }
+
+
 
         [HttpPost]
         public async Task<ActionResult<ProductModel>> PostTodoItem([FromForm] ProductRequestModel productRequest)

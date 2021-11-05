@@ -57,7 +57,7 @@ function Order ({connectedUser}) {
                 <img src={location.state.selectedProduct.imageSrc} alt=""/>
               </div>
               <div className="box">
-                <div className="row">
+                <div className="row_ord">
                   <div className="title">{location.state.selectedProduct.name}</div>
                   <span>Pret: {location.state.selectedProduct.price} lei</span>
                 </div>

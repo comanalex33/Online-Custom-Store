@@ -35,12 +35,13 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderProductModel>>> Get()
         {
-            return await _context.OrderProducts 
+            return await _context.OrderProducts
                 .Select(x => new OrderProductModel()
                 {
                     Id = x.Id,
                     ProductId = x.ProductId,
-                    Text=x.Text,
+                    UserId = x.UserId,
+                    Text = x.Text,
                     ImageName = x.ImageName,
                     ImageSrc = (x.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageName),
                 })
@@ -50,12 +51,13 @@ namespace backend.Controllers
         [HttpGet("{userId}")]
         public async Task<ActionResult<IEnumerable<OrderProductModel>>> GetOrderProductsByUserId(long userId)
         {
-            var list = _context.OrderProducts.Where(ord => ord.UserId == userId).Select(ord => ord.ProductId).ToList();
-            return await _context.OrderProducts.Where(order => list.Contains(order.Id))
+            
+            return await _context.OrderProducts.Where(order => order.UserId==userId)
                             .Select(x => new OrderProductModel()
                             {
                                 Id = x.Id,
                                 ProductId = x.ProductId,
+                                UserId=x.UserId,
                                 Text = x.Text,
                                 ImageName = x.ImageName,
                                 ImageSrc = (x.ImageName == null) ? null : String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ImageName),
@@ -65,7 +67,7 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<OrderProductModel>> Post([FromForm] OrderProductRequestModel requestOrder)
         {
-            var list = _context.Favourites.Where(ord => ord.ProductId == requestOrder.ProductId && ord.UserId == requestOrder.UserId).ToList();
+            
             long Id = _context.OrderProducts.Count() + 1;
 
             var orderCheck = await _context.OrderProducts.FindAsync(Id);
