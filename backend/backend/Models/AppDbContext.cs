@@ -12,5 +12,6 @@ namespace backend.Models
         public DbSet<ProductModel> Products { get; set; }
         public DbSet<FavouriteModel> Favourites { get; set; }
         public DbSet<OrderProductModel> OrderProducts { get; set; }
+        public DbSet<OrderModel> Orders { get; set; }
     }
 }
