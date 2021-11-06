@@ -124,6 +124,19 @@ namespace backend.Controllers
                 return NotFound();
             }
             _context.Users.Remove(user);
+
+            var listFavourites = _context.Favourites.Where(fav => fav.UserId == id).ToList();
+            for(int i = 0; i < listFavourites.Count; i++)
+            {
+                _context.Favourites.Remove(listFavourites[i]);
+            }
+
+            var listOrderProducts = _context.OrderProducts.Where(fav => fav.UserId == id).ToList();
+            for (int i = 0; i < listOrderProducts.Count; i++)
+            {
+                _context.OrderProducts.Remove(listOrderProducts[i]);
+            }
+
             await _context.SaveChangesAsync();
 
             return user;
@@ -137,7 +150,7 @@ namespace backend.Controllers
             string imageName = new string(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ', '-');
             imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
             var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
-            using(var fileStream = new FileStream(imagePath, FileMode.Create))
+            using (var fileStream = new FileStream(imagePath, FileMode.Create))
             {
                 await imageFile.CopyToAsync(fileStream);
             }
