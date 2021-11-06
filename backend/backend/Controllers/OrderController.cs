@@ -29,6 +29,10 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<OrderModel>> PostTodoItem(OrderRequestModel requestModel)
         {
+            if (!checkExists(requestModel.ProductId, requestModel.UserId))
+            {
+                return BadRequest();
+            }
 
             int sum = getPrice(requestModel.ProductId);
             requestModel.price = sum;
@@ -42,8 +46,17 @@ namespace backend.Controllers
                 orderCheck = await _context.Orders.FindAsync(Id);
             }
 
-            OrderModel order = new OrderModel(Id, requestModel);
+            DateTime dateTime = DateTime.UtcNow.Date;
+
+            OrderModel order = new OrderModel(Id, dateTime.ToString("dd/MM/yyyy"), requestModel);
             _context.Orders.Add(order);
+
+            var listOrderProducts = _context.OrderProducts.Where(prod => requestModel.ProductId.Contains(prod.Id)).ToList();
+            for (int i = 0; i < listOrderProducts.Count; i++)
+            {
+                _context.OrderProducts.Remove(listOrderProducts[i]);
+            }
+
             await _context.SaveChangesAsync();
 
             return order;
@@ -90,6 +103,20 @@ namespace backend.Controllers
                 sum += (int)product.Price;
             }
             return sum;
+        }
+
+        [NonAction]
+        private bool checkExists(List<long> list, long id)
+        {
+            for(int i = 0; i < list.Count; i++)
+            {
+                OrderProductModel orderProduct = _context.OrderProducts.Find(list[i]);
+                if (orderProduct == null)
+                    return false;
+                if (orderProduct.UserId != id)
+                    return false;
+            }
+            return true;
         }
     }
 }

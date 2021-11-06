@@ -131,10 +131,16 @@ namespace backend.Controllers
                 _context.Favourites.Remove(listFavourites[i]);
             }
 
-            var listOrderProducts = _context.OrderProducts.Where(fav => fav.UserId == id).ToList();
+            var listOrderProducts = _context.OrderProducts.Where(prod => prod.UserId == id).ToList();
             for (int i = 0; i < listOrderProducts.Count; i++)
             {
                 _context.OrderProducts.Remove(listOrderProducts[i]);
+            }
+
+            var listOrders = _context.Orders.Where(order => order.UserId == id).ToList();
+            for(int i = 0; i < listOrders.Count; i++)
+            {
+                _context.Orders.Remove(listOrders[i]);
             }
 
             await _context.SaveChangesAsync();
