@@ -51,3 +51,7 @@
 .remove-favourite:active {
     background-color: white;
 }
+
+.favourite-data-item {
+    margin-left: 20px;
+}

@@ -1,15 +1,35 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import '../css/Authentication.css'
+import { useHistory } from 'react-router';
+import Popup from './Popups/Popup';
 
 function Register(props) {
 
+    const history = useHistory()
+
+    const [popup,setPopup] = useState(false)
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [repassword, setRePassword] = useState('')
 
     function handleSubmit() {
+
+        if(email === ''){
+            alert('Email field is empty')
+            return
+        }
+
+        if(username === ''){
+            alert('Username field is empty')
+            return
+        }
+
+        if(password === ''){
+            alert('Password field is empty')
+            return
+        }
 
         if(password !== repassword) {
             alert(`Password missmatch!`)
@@ -26,11 +46,14 @@ function Register(props) {
 
         axios.post('http://localhost:5000/api/User', user)
             .then(res => {
-                alert('User added succesfully!');
                 console.log(res);
+                setPopup(true)
             })
             .catch(err => {
-                console.log(err)
+                if(err.response.status === 400)
+                    alert("User already exists!")
+                return
+
             });
     }
 
@@ -57,6 +80,11 @@ function Register(props) {
          } else {
              passwordField.type = "password";
          }
+    }
+
+    const handleCreatedUser = event => {
+        setPopup(false)
+        history.push('/login')
     }
 
     return (
@@ -87,6 +115,12 @@ function Register(props) {
                     </div>
                 </div>
             </div>
+            <Popup trigger={popup}>
+                <h2 id='title-accept-delete'>User added succesfully</h2>
+                <div>
+                    <button className='button-reject' onClick={handleCreatedUser}>Ok</button>
+                </div>
+            </Popup>
         </div>
     )
 }
