@@ -1,0 +1,49 @@
+.product-details-card {
+    background-color: aqua;
+    border-radius: 30px;
+    margin: 20px;
+
+    position: relative;
+}
+
+.product-details-title {
+    margin-left: 20px;
+}
+
+#product-details-image {
+    width: auto;
+    height: 80px;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.product-details-personalized-image {
+    width: auto;
+    height: 80px;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+.personalized-container {
+    position: relative;
+    height: 100px;
+    padding: 40px;
+}
+
+.personalized-type {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+}

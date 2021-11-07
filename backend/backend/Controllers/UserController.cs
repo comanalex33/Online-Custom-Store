@@ -143,6 +143,12 @@ namespace backend.Controllers
                 _context.Orders.Remove(listOrders[i]);
             }
 
+            var savedListOrderProducts = _context.SavedOrderProducts.Where(product => product.UserId == id).ToList();
+            for(int i = 0; i < savedListOrderProducts.Count; i++)
+            {
+                _context.SavedOrderProducts.Remove(savedListOrderProducts[i]);
+            }
+
             await _context.SaveChangesAsync();
 
             return user;

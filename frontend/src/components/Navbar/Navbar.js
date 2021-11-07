@@ -47,6 +47,11 @@ const Navbar = ({connectedUser}) => {
                         Shopping Cart
                     </NavLink> 
                     : null }
+                    {(connectedUser.role === 'client') ?
+                    <NavLink to="/dashboard/orders">
+                        Orders
+                    </NavLink> 
+                    : null }
                 </NavMenu>
                 <NavBtn>
                     <NavBtnLink onClick={handleLogOut}>Log Out</NavBtnLink>

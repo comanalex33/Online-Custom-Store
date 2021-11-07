@@ -11,6 +11,7 @@ import Faqs from './Client/Faqs';
 import Requests from './Client/Requests';
 import AddProduct from './Client/AddProduct';
 import ShoppingCart from './Client/ShoppingCart';
+import OrderList from './Client/OrderList';
 
 function Dashboard({ location }) {
 
@@ -28,6 +29,7 @@ function Dashboard({ location }) {
           <Route path='/dashboard/order' render={(props) => (<Order {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/products' render={(props) => (<Products {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/faqs' render={(props) => (<Faqs {...props} connectedUser={connectedUser}/>)} />
+          <Route path='/dashboard/orders' render={(props) => (<OrderList {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/profile' render={(props) => (<Profile {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/requests' component={Requests} />
         </Switch>

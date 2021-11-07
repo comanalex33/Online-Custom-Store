@@ -48,9 +48,9 @@ namespace backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductModel>> GetById(long id)
+        public async Task<ActionResult<SavedProductModel>> GetById(long id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.SavedProducts.FindAsync(id);
 
             if (product == null)
             {
@@ -67,13 +67,13 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductModel>> PostTodoItem([FromForm] ProductRequestModel productRequest)
         {
-            long Id = _context.Products.Count() + 1;
+            long Id = _context.SavedProducts.Count() + 1;
 
-            var faqCheck = await _context.Products.FindAsync(Id);
+            var faqCheck = await _context.SavedProducts.FindAsync(Id);
             while (faqCheck != null)
             {
                 Id = Id + 1;
-                faqCheck = await _context.Products.FindAsync(Id);
+                faqCheck = await _context.SavedProducts.FindAsync(Id);
             }
             ProductModel product = new ProductModel(Id, productRequest);
             if (product.ImageFile != null)
@@ -82,6 +82,9 @@ namespace backend.Controllers
             }
             
             _context.Products.Add(product);
+
+            SavedProductModel savedProduct = new SavedProductModel(Id, product.ImageName, productRequest);
+            _context.SavedProducts.Add(savedProduct);
             await _context.SaveChangesAsync();
 
             return product;

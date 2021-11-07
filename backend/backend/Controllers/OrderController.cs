@@ -61,12 +61,14 @@ namespace backend.Controllers
 
             return order;
         }
+
         [HttpGet("{orderId}")]
-        public async Task<ActionResult<IEnumerable<OrderProductModel>>> GetProductsByOrderId(long orderId)
+        public async Task<ActionResult<IEnumerable<SavedOrderProductModelcs>>> GetProductsByOrderId(long orderId)
         {
             var list = _context.Orders.Where(order => order.Id == orderId).Select(order => order.ProductId).First();
-            return await _context.OrderProducts.Where(prod => list.Contains(prod.Id))
-                            .Select(x => new OrderProductModel()
+            System.Diagnostics.Debug.WriteLine(list.Count);
+            return await _context.SavedOrderProducts.Where(prod => list.Contains(prod.Id))
+                            .Select(x => new SavedOrderProductModelcs()
                             {
                                 Id = x.Id,
                                 ProductId = x.ProductId,
@@ -76,6 +78,13 @@ namespace backend.Controllers
                             })
                             .ToListAsync();
         }
+
+        [HttpGet("getByUser/{userId}")]
+        public async Task<ActionResult<IEnumerable<OrderModel>>> GetOrdersByUserId(long userId)
+        {
+            return await _context.Orders.Where(order => order.UserId == userId).ToListAsync();
+        }
+
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<OrderModel>> Delete(long id)

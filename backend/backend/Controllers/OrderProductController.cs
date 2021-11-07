@@ -68,13 +68,13 @@ namespace backend.Controllers
         public async Task<ActionResult<OrderProductModel>> Post([FromForm] OrderProductRequestModel requestOrder)
         {
             
-            long Id = _context.OrderProducts.Count() + 1;
+            long Id = _context.SavedOrderProducts.Count() + 1;
 
-            var orderCheck = await _context.OrderProducts.FindAsync(Id);
+            var orderCheck = await _context.SavedOrderProducts.FindAsync(Id);
             while (orderCheck != null)
             {
                 Id = Id + 1;
-                orderCheck = await _context.OrderProducts.FindAsync(Id);
+                orderCheck = await _context.SavedOrderProducts.FindAsync(Id);
             }
             
             OrderProductModel order = new OrderProductModel(Id, requestOrder);
@@ -84,6 +84,9 @@ namespace backend.Controllers
             }
 
             _context.OrderProducts.Add(order);
+
+            SavedOrderProductModelcs savedOrder = new SavedOrderProductModelcs(Id, order.ImageName, requestOrder);
+            _context.SavedOrderProducts.Add(savedOrder);
             await _context.SaveChangesAsync();
 
             return order;

@@ -13,5 +13,7 @@ namespace backend.Models
         public DbSet<FavouriteModel> Favourites { get; set; }
         public DbSet<OrderProductModel> OrderProducts { get; set; }
         public DbSet<OrderModel> Orders { get; set; }
+        public DbSet<SavedProductModel> SavedProducts { get; set; }
+        public DbSet<SavedOrderProductModelcs> SavedOrderProducts { get; set; }
     }
 }

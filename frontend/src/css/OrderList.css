@@ -1,0 +1,47 @@
+.orderList-card {
+    background-color: aqua;
+    border-radius: 20px;
+    margin: 20px 50px 20px 50px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.orderList-number {
+    margin: 5px;
+}
+
+#orderList-show-details {
+    bottom: 0;
+    right: 10px;
+    top: 0;
+    color: blue;
+
+    background: none;
+    border: none;
+}
+
+#orderList-show-details:active {
+    color: red;
+}
+
+.popup-close {
+    width: 100%;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#popup-close-button {
+    background-color: red;
+    color: white;
+}
+
+.show-details-button {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

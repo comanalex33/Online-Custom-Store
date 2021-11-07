@@ -33,7 +33,7 @@ function ShoppingCart({connectedUser}){
     useEffect(()=>{
       for(let i=0;i<orders.length;i++)
       {
-        productsId.push(orders[i].productId);
+        productsId.push(orders[i].id);
         setProductsId(productsId);
         console.log(productsId);
       }
