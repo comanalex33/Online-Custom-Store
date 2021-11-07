@@ -27,9 +27,10 @@ const Navbar = ({connectedUser}) => {
                     <NavLink to="/dashboard/products">
                         Products
                     </NavLink>
+                    {(connectedUser.role === 'client') ?
                     <NavLink to="/dashboard/favourites">
                         Favourites
-                    </NavLink>
+                    </NavLink> :null}
                     <NavLink to="/dashboard/faqs">
                         Faqs
                     </NavLink>

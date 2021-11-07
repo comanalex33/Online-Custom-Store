@@ -1,14 +1,16 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import {useEffect} from "react"
-import { useHistory } from 'react-router';
 import '../../css/ShoppingCart.css'
 
 function ShoppingCard(props) {
 
     const order = props.order;
     const[product,setProduct]=useState('');
-    
+    const orders = props.orders
+    const setOrders = props.setOrders
+    const [values, setValues] = useState(false) 
+
     useEffect(() => {
         axios.get(`http://localhost:5000/api/Product/${order.productId}`)
             .then(res => {
@@ -18,9 +20,22 @@ function ShoppingCard(props) {
             .catch(err => {
                 console.log(err)
             })
-    },[])
+    },[]);
 
-    
+    const handleRemoveFromCart = id => {
+      if (window.confirm("Are you sure you want to remove this?")) {
+          axios.delete(`http://localhost:5000/api/OrderProduct/${id}`)
+              .then(res => {
+                  console.log(res.data)
+              })
+              .catch(err => {
+                  console.log(err)
+              })  
+         
+      }
+     //setOrders(orders);
+    }
+   
   
     return (
       <div className="row">
@@ -45,9 +60,9 @@ function ShoppingCard(props) {
 
       <div className="col right">
 
-        <div className="remove">
+        <div className="remove" >
           <svg
-           
+            onClick={() => handleRemoveFromCart(order.id)}
             version="1.1"
             className="close"
             x="0px"

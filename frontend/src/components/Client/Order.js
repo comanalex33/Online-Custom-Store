@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useEffect } from "react";
+import { useEffect}from "react";
+import { useHistory } from "react-router";
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import '../../css/Order.css'
@@ -19,7 +20,7 @@ function Order ({connectedUser}) {
      }, [location]);
 
     const selectedId=location.state.selectedProduct.id;
-    const userId= connectedUser.id;
+    const history=useHistory();
     const handleAddToCart = event =>{
       const formData= new FormData();
       formData.append('userId', connectedUser.id)
@@ -38,6 +39,7 @@ function Order ({connectedUser}) {
 
       order.push(formData);
       setOrder(order);
+      history.push('/dashboard/products');
     }
 
     const handleTextChange = event => {

@@ -184,11 +184,13 @@ input {
   overflow: hidden;
 }
 
-.address{
-    margin-top: 50px;
-    width: 100%;
-    min-height: 4vmin;
+.address{ 
+    display: block;
+    margin: 20px;
+    width: 60%;
+    min-height: 6vmin;
     border-radius: 10px;
+    text-align: center;
 }
 
 .empty-product {
@@ -199,6 +201,30 @@ input {
   font-size: 1.3rem; 
   padding: 10px 30px; 
   border-radius: 5px;
+}
+
+.empty_cart{
+  margin: 10px;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  
+}
+
+.make_order{
+  margin:50px;
+  width: 130px;
+  height: 35px;
+  margin: 5px;
+  font-size: 14px;
+  border-radius: 35px;
+  background-color: #416bf7;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: background-color .3s ease;
+  transition: background-color .3s ease;
+  overflow: hidden;
 }
 
 /* --- SMALL SCREEN --- */

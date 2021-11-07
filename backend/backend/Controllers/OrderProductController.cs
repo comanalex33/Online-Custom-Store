@@ -88,6 +88,20 @@ namespace backend.Controllers
 
             return order;
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<OrderProductModel>> Delete(long id)
+        {
+            var order = await _context.OrderProducts.FindAsync(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            _context.OrderProducts.Remove(order);
+            await _context.SaveChangesAsync();
+
+            return order;
+        }
         [NonAction]
         public async Task<string> SaveImage(IFormFile imageFile)
         {
