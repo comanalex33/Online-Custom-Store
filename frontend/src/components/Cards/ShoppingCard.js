@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import {useEffect} from "react"
+import { useHistory } from 'react-router';
 import '../../css/ShoppingCart.css'
 
 function ShoppingCard(props) {
 
     const order = props.order;
     const[product,setProduct]=useState('');
-
+    
     useEffect(() => {
         axios.get(`http://localhost:5000/api/Product/${order.productId}`)
             .then(res => {
@@ -17,10 +18,10 @@ function ShoppingCard(props) {
             .catch(err => {
                 console.log(err)
             })
-    },)
+    },[])
 
     
-    
+  
     return (
       <div className="row">
       <div className="col left">
@@ -37,9 +38,7 @@ function ShoppingCard(props) {
           <div className="price">{product.price} lei</div>
           <div className="name">Text personalizat: {order.text} </div>
           <div className="name">Poza personalizata: 
-            
             <img src={order.imageSrc} alt="" height="100px" width="100px"/>
-            
           </div>
         </div>
       </div>

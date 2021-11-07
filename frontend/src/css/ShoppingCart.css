@@ -46,11 +46,11 @@ input {
   background-color: rgb(184, 219, 252);
 }
 
-.orders {
+.orders_pr {
   border: 5px solid rgb(238, 238, 253);
 }
 
-.orderss > li {
+.orders_pr > li {
   padding: 1rem 0;
   border-bottom: 1px solid #ddd;
 }
@@ -184,6 +184,12 @@ input {
   overflow: hidden;
 }
 
+.address{
+    margin-top: 50px;
+    width: 100%;
+    min-height: 4vmin;
+    border-radius: 10px;
+}
 
 .empty-product {
   text-align: center;

@@ -29,6 +29,10 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<OrderModel>> PostTodoItem(OrderRequestModel requestModel)
         {
+
+            int sum = getPrice(requestModel.ProductId);
+            requestModel.price = sum;
+
             long Id = _context.Orders.Count() + 1;
 
             var orderCheck = await _context.Orders.FindAsync(Id);
@@ -44,7 +48,6 @@ namespace backend.Controllers
 
             return order;
         }
-
         [HttpGet("{orderId}")]
         public async Task<ActionResult<IEnumerable<OrderProductModel>>> GetProductsByOrderId(long orderId)
         {
@@ -73,6 +76,19 @@ namespace backend.Controllers
             await _context.SaveChangesAsync();
 
             return order;
+        }
+
+        [NonAction]
+        private int getPrice(List<long> list)
+        {
+            int sum = 0;
+            for (int i = 0; i < list.Count; i++)
+            {
+                OrderProductModel orderProduct = _context.OrderProducts.Find(list[i]);
+                ProductModel product = _context.Products.Find(orderProduct.ProductId);
+                sum += (int)product.Price;
+            }
+            return sum;
         }
     }
 }
