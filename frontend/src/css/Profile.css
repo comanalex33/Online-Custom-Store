@@ -112,6 +112,14 @@
     padding-right: 100px;
 }
 
+.profile-view{
+    height: 100%;
+    margin-left: 1px;
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+    padding-right: 100px;
+}
 #delete-account-button {
     background: red;
     color: white;

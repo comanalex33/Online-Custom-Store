@@ -11,6 +11,7 @@ import Faqs from './Client/Faqs';
 import Requests from './Client/Requests';
 import AddProduct from './Client/AddProduct';
 import ShoppingCart from './Client/ShoppingCart';
+import ViewClients from './Client/ViewClients';
 
 function Dashboard({ location }) {
 
@@ -24,6 +25,7 @@ function Dashboard({ location }) {
           <Route path='/dashboard' exact component={Home}  />
           <Route path='/dashboard/favourites' render={(props) => (<Favourites {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/add' exact component={AddProduct} />
+          <Route path='/dashboard/view' exact component={ViewClients} />
           <Route path='/dashboard/cart' render={(props) => (<ShoppingCart {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/order' render={(props) => (<Order {...props} connectedUser={connectedUser}/>)} />
           <Route path='/dashboard/products' render={(props) => (<Products {...props} connectedUser={connectedUser}/>)} />
