@@ -7,9 +7,8 @@ function ShoppingCard(props) {
 
     const order = props.order;
     const[product,setProduct]=useState('');
-    const orders = props.orders
-    const setOrders = props.setOrders
-    const [values, setValues] = useState(false) 
+    const orders = props.orders;
+    const setOrders = props.setOrders;
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/Product/${order.productId}`)
@@ -22,19 +21,29 @@ function ShoppingCard(props) {
             })
     },[]);
 
-    const handleRemoveFromCart = id => {
+    const handleRemoveFromCart = () => {
       if (window.confirm("Are you sure you want to remove this?")) {
-          axios.delete(`http://localhost:5000/api/OrderProduct/${id}`)
+          axios.delete(`http://localhost:5000/api/OrderProduct/${order.id}`)
               .then(res => {
                   console.log(res.data)
               })
               .catch(err => {
                   console.log(err)
               })  
-         
+      deleteItem()   
       }
-     //setOrders(orders);
+     
     }
+
+    function deleteItem() {
+      var l = [];
+      for (const ord of orders) {
+          if (ord.id === order.id)
+              continue;
+          l.push(ord);
+      }
+      setOrders(l);
+  }
    
   
     return (
@@ -62,7 +71,7 @@ function ShoppingCard(props) {
 
         <div className="remove" >
           <svg
-            onClick={() => handleRemoveFromCart(order.id)}
+            onClick={handleRemoveFromCart}
             version="1.1"
             className="close"
             x="0px"

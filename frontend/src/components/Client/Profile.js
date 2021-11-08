@@ -15,6 +15,7 @@ function Profile({ connectedUser }) {
     const [errorMessage, setErrorMessage] = useState('')
     const [user, setUser] = useState(connectedUser)
     const [values, setValues] = useState(false)
+    
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/User/${connectedUser.id}`)
@@ -183,6 +184,11 @@ function Profile({ connectedUser }) {
         }, 200)
     }
 
+    const handleViewAllClients = event =>{
+        history.push('/dashboard/view')
+    }
+
+
     return (
         <div className='profile-container-flex'>
             <div className='profile-container'>
@@ -210,11 +216,15 @@ function Profile({ connectedUser }) {
                             {(user.role === 'client') ?
                                 ((user.wantsAdmin == false) ?
                                     <button onClick={handleRequestAdminAccess}>Request admin role</button> : <h3>Pending request</h3>)
-                                : null}
+                                : 
+                                <button  id="view-all-clients" onClick={handleViewAllClients}>View all clients</button>
+                            }
                         </div>
+                       
                         <div className='profile-request-admin'>
                             <button id='delete-account-button' onClick={() => setPopup(true)}>Delete account</button>
                         </div>
+                        
                     </div>
                 </div>
             </div>

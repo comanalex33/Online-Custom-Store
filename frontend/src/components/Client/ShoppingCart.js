@@ -64,6 +64,8 @@ function ShoppingCart({connectedUser}){
       finalOrders.push(finalOrder);
       setFinalOrder(finalOrders);
       setPopup(false);
+      history.push('/dashboard/products')
+      
     }
 
     
